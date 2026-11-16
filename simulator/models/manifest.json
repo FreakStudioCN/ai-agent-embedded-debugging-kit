@@ -1,0 +1,421 @@
+{
+  "repository": "https://github.com/20sffactory/community_robot_arm",
+  "commit": "6c2f57390f0186f47bb199f06c875dedf8de268f",
+  "cad_license": "CC BY 4.0, per upstream README",
+  "files": [
+    {
+      "path": "CAD Files/case_body.stl",
+      "bytes": 504184,
+      "sha256": "243a8b7673e57a9a903203eac56582392554428e1846c1e855738af71679f5ce",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_body.stl"
+    },
+    {
+      "path": "CAD Files/case_bottom.stl",
+      "bytes": 457884,
+      "sha256": "b7ba98955531464098ffc0653c13c531950742f7da9022f1bf36eaa9ca21394e",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_bottom.stl"
+    },
+    {
+      "path": "CAD Files/case_cablehole.stl",
+      "bytes": 52084,
+      "sha256": "1725d05b66cacde3135af8e3ed3eec36cdc791eb946b72d21d380184ce157f3f",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_cablehole.stl"
+    },
+    {
+      "path": "CAD Files/case_fangrill.stl",
+      "bytes": 265084,
+      "sha256": "732c7376d0df3e71f8b7add8d7a533da2efbb3b4a77c8ecbfbb27a201c3ea274",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_fangrill.stl"
+    },
+    {
+      "path": "CAD Files/case_grill.stl",
+      "bytes": 13784,
+      "sha256": "c02bd2c1a1ff65410035adbc8a734e3b58bc17d8ef6355eb4c46adc5fca98297",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_grill.stl"
+    },
+    {
+      "path": "CAD Files/case_grill_duplicate.stl",
+      "bytes": 13784,
+      "sha256": "1f728a70aa7ac3134dc8428d0660c1637acd583458dec3dc459a886c528a6a03",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_grill_duplicate.stl"
+    },
+    {
+      "path": "CAD Files/case_resetbutton.stl",
+      "bytes": 520284,
+      "sha256": "a0ae5e3232a3c2d112ba62b17eae5ea626c1ae727032b4e2d2846c677eb0cd29",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_resetbutton.stl"
+    },
+    {
+      "path": "CAD Files/case_top.stl",
+      "bytes": 449784,
+      "sha256": "ea244ee3d87e14ac2c9d0e028f2a71a8ba0a000fd9c467374d1c7ae96c01e7de",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_top.stl"
+    },
+    {
+      "path": "CAD Files/case_usb.stl",
+      "bytes": 3284,
+      "sha256": "6ba624adfd9f3c91a298522676c09c9777779f45bc08be91ae832dc459ca9d41",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/case_usb.stl"
+    },
+    {
+      "path": "CAD Files/dual_manipulator_support/main_body_dual.stl",
+      "bytes": 1148184,
+      "sha256": "4f48ac006df0d89a6a0e3c06dcc85cd613eac635a79fe067f3fbc9e304ddbb0d",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/dual_manipulator_support/main_body_dual.stl"
+    },
+    {
+      "path": "CAD Files/dual_manipulator_support/main_body_dual_v2.stl",
+      "bytes": 1155084,
+      "sha256": "5a048e7122be35a3dd8f42b6e96e14592b98ccbba378aab6ecc3a9ea6f6577b5",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/dual_manipulator_support/main_body_dual_v2.stl"
+    },
+    {
+      "path": "CAD Files/dual_manipulator_support/manipulator_dual.stl",
+      "bytes": 286584,
+      "sha256": "af1892299689120be2e3f3b626653880fe798e86096664348a1fcd1e51229ec8",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/dual_manipulator_support/manipulator_dual.stl"
+    },
+    {
+      "path": "CAD Files/dual_manipulator_support/triplate_dual.stl",
+      "bytes": 183384,
+      "sha256": "643aba689c7ba92ce1060bcf07aabf8e6c35850ad9e30311b6d86ebb140b769d",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/dual_manipulator_support/triplate_dual.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_2020.stl",
+      "bytes": 273684,
+      "sha256": "142282aec6204c55cf0d23f4a2e38e0cb308569ae902f3ffe46b80deac8a8ba0",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_2020.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_belt_holder.stl",
+      "bytes": 215784,
+      "sha256": "e763bc55045f1e7b4373357cb5b83ccad6772ddf4877e84ee7c582e213483d99",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_belt_holder.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_leg.stl",
+      "bytes": 54284,
+      "sha256": "1fd13b43934537943e48376c60eb52bee56b1917e9d74f522613aca45a494451",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_leg.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_motor_mount.stl",
+      "bytes": 187784,
+      "sha256": "8bc562bfda76bd2452535a3217b86f3127afb8df1b292ae8f951c0aa70abae1f",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_motor_mount.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_pulley_mount.stl",
+      "bytes": 106284,
+      "sha256": "30154575c93e37d66791622f890aa70ffa194e97a8fe6c359930a267f44f47e2",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_pulley_mount.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_rod_fastener.stl",
+      "bytes": 199284,
+      "sha256": "829c7a726afa2e68ca24e2cbe97dcd8a6251091f4ada50d778235e750f467772",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_rod_fastener.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_rod_mount.stl",
+      "bytes": 87284,
+      "sha256": "70e7fa83be4441a64e68dd3da8e3585bef47336291ea767f544f01e84731ea83",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_rod_mount.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_slide_endstop.stl",
+      "bytes": 172084,
+      "sha256": "5e9ea3d7524b96c8457a1eaecd6203a0740d9897411d5ee0c9c57789707ec8d0",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_slide_endstop.stl"
+    },
+    {
+      "path": "CAD Files/rail_stl/rail_slide_plate.stl",
+      "bytes": 373084,
+      "sha256": "3681f499a2846f930c27d0761933dabd79fcc533a5e16e0b82bc873a1cb83ba0",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/rail_stl/rail_slide_plate.stl"
+    },
+    {
+      "path": "CAD Files/robot_arm upper_shank.stl",
+      "bytes": 194484,
+      "sha256": "0e1025128a0ba2051f81f9b15691a031cb83d62a3e5ddd10eca2ed66ae967e33",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_arm%20upper_shank.stl"
+    },
+    {
+      "path": "CAD Files/robot_arm.step",
+      "bytes": 20889173,
+      "sha256": "b142a5c2b31f6b0329b431bdf03956dd868084ed1ec53eb20528032ed79f7c33",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_arm.step"
+    },
+    {
+      "path": "CAD Files/robot_arm_enclosure_v0.2.step",
+      "bytes": 688333,
+      "sha256": "64629d6fa8e8ec92d7d013155acd17ef9af67dcb9f7ab4d2dd8c45aef43071b3",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_arm_enclosure_v0.2.step"
+    },
+    {
+      "path": "CAD Files/robot_arm_upper_shank_v2.stl",
+      "bytes": 198084,
+      "sha256": "6ec2107bd5a766b08c38a181b874c31d1be5e220e213e4e24d48b7f29d0f9877",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_arm_upper_shank_v2.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm basering.stl",
+      "bytes": 161584,
+      "sha256": "a4b35b672edf7e8a017a9afa3f43df7ef15a27ddd0cbccc3c8f3ee1a006f1214",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20basering.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm endstop.stl",
+      "bytes": 315584,
+      "sha256": "e3cb2b1a33676366a680bd454f7a3ad3d2e152d9ffbdbbf92fceb3bc4905b3a3",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20endstop.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm gear_body.stl",
+      "bytes": 2451484,
+      "sha256": "941c28444ccbd23548245d6ac5712c853467720980dde21cf2a96d53e843a57b",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20gear_body.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm leg.stl",
+      "bytes": 134284,
+      "sha256": "a9c24ff32138978efcdac642723605992b7ff66d503df1252d30cb7df77e031d",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20leg.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm lever.stl",
+      "bytes": 210884,
+      "sha256": "3b2751d878495b9b0dedd081a183c9ba55b89436d97e7f2ea2672f602c50e603",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20lever.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm lower_shank.stl",
+      "bytes": 264084,
+      "sha256": "4e5b2e04db9396224ff9408a8a6bc4235efa0ea1da1156a47a78d08bf4274a2e",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20lower_shank.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm main_body.stl",
+      "bytes": 1071484,
+      "sha256": "edf16b1f94445a7d672c96e38dbe74334f7037243fdc3a2dd8182ac8ece0c3fa",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20main_body.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm main_body_v2.stl",
+      "bytes": 1103284,
+      "sha256": "5a854feb3af21ded3d1aba3a96c1d9053fa1d75d63b735678d16fbc7500e1e20",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20main_body_v2.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm manipulator.stl",
+      "bytes": 158484,
+      "sha256": "6f0e3800ed450dde73c48520b66e6f87ae8880de36f23c9c3f973c38167d80df",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20manipulator.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm pleuel.stl",
+      "bytes": 155784,
+      "sha256": "2afe13aba2e53425693ccb886826404d5263e014e33a2733b8562ad491c72424",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20pleuel.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm pleuel_bend_lower.stl",
+      "bytes": 156884,
+      "sha256": "05d03933018062b34c54d93e9768075be0c85f16c377dc0edee82c7c4f7e1c41",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20pleuel_bend_lower.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm pleuel_bend_upper.stl",
+      "bytes": 156084,
+      "sha256": "c68430114399f78b2bff08a578e4b88514f35b259cef06d9fa18db3b1a83cff8",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20pleuel_bend_upper.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm rotategear.stl",
+      "bytes": 2476684,
+      "sha256": "22ba3205ee7415fe1854412958f3a17f84b50049243bc386e321e254495f3cda",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20rotategear.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm socket.stl",
+      "bytes": 625384,
+      "sha256": "89f3bdf248cf420085293677c94e01816ebb992db6827ff1ef3a037a52a6a2bd",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20socket.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm socket_v2.stl",
+      "bytes": 632684,
+      "sha256": "88b68ea047b21eccf9ee3f811aa33ffa6870e5736b0b1afcc3208aa1828feede",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20socket_v2.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm stabilizer.stl",
+      "bytes": 102284,
+      "sha256": "25d5bbb6e6b0fb2d140794ffa21a5e0c1ead5f5ff23563825da350f74d539e0c",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20stabilizer.stl"
+    },
+    {
+      "path": "CAD Files/robot_belt_arm triplate.stl",
+      "bytes": 182784,
+      "sha256": "018b1fb001425b3d37d77a5d3968ddc1abe0408530b254b9572b479b055f45ef",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/robot_belt_arm%20triplate.stl"
+    },
+    {
+      "path": "CAD Files/shank_calibrator/shank_calibrator_120mm.stl",
+      "bytes": 81484,
+      "sha256": "b233c5d4461dda55ef0e55d9e44ad289b05f7310dafc8120c8b5c5532b2c938e",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_calibrator/shank_calibrator_120mm.stl"
+    },
+    {
+      "path": "CAD Files/shank_calibrator/shank_calibrator_140mm.stl",
+      "bytes": 81484,
+      "sha256": "d9da726ae6459802c400fc0695cf502bc1ce1c5a956f3fe62aa2ed3da7181cf2",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_calibrator/shank_calibrator_140mm.stl"
+    },
+    {
+      "path": "CAD Files/shank_pleuel_140mm/lower_shank_140.stl",
+      "bytes": 239384,
+      "sha256": "c18c75ca2e335d8b1cf8ab6ec854a08815819dd8ff868a4a6360afe977fd4736",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_pleuel_140mm/lower_shank_140.stl"
+    },
+    {
+      "path": "CAD Files/shank_pleuel_140mm/pleuel_140.stl",
+      "bytes": 155184,
+      "sha256": "eb563a74bf6052efd44891b8e616bad50ea7a1b44e762da05093ff63eca04319",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_pleuel_140mm/pleuel_140.stl"
+    },
+    {
+      "path": "CAD Files/shank_pleuel_140mm/pleuel_bend_140.stl",
+      "bytes": 155684,
+      "sha256": "433022939536ba6249f20d97ebbd20b8629a6bfb7220c5ee4f9e17f3a7c7b158",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_pleuel_140mm/pleuel_bend_140.stl"
+    },
+    {
+      "path": "CAD Files/shank_pleuel_140mm/upper_shank_140.stl",
+      "bytes": 198084,
+      "sha256": "eeb800eac892cb51d22fb087634dbb5c5d7492114aac2ee6a3ea637457f05bf7",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/shank_pleuel_140mm/upper_shank_140.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/28byj_cover_by_woutervanschaik/Cap.stl",
+      "bytes": 79784,
+      "sha256": "478cd114422ee5b3ec3a76dc9363c49872b29b8f81ad7d19a20995264a5045f7",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/28byj_cover_by_woutervanschaik/Cap.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/28byj_cover_by_woutervanschaik/Cap.stp",
+      "bytes": 115534,
+      "sha256": "2e391e6e77406bb120470bc1b56ae0de44218f7c2d18f704836e24403f39de5f",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/28byj_cover_by_woutervanschaik/Cap.stp"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/3dprint_extractor.stl",
+      "bytes": 1573384,
+      "sha256": "0cca45ba64ef23213935703e24cece61f493b9a7d15070e3a5ff3d436a56b3a3",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/3dprint_extractor.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/dragon_head.stl",
+      "bytes": 566984,
+      "sha256": "17d46e1c46de527675a20e805c6eccf884de9704516d4ebd59d460df707ea2dc",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/dragon_head.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/gripper_stl_by_ftobler/gripperBase_by_ftobler.stl",
+      "bytes": 222584,
+      "sha256": "89904911dcfffacf6f0ccfcc0c83a1f3ea2d5048d96eb2240afb069c7e9a7a21",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/gripper_stl_by_ftobler/gripperBase_by_ftobler.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/gripper_stl_by_ftobler/gripperFinger_by_ftobler.stl",
+      "bytes": 242684,
+      "sha256": "ac66983cf0d7fc97fae6da69f6353ab12e78ba3463d20835d7ad65ed9f1896c6",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/gripper_stl_by_ftobler/gripperFinger_by_ftobler.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/gripper_stl_by_ftobler/gripperHolePlateWithPenHolder_by_Leandro.stl",
+      "bytes": 1119998,
+      "sha256": "cb0ac0a1a9208c0d30edafd47dab1a600ff03b500832d6d86248fd5a952a4eb2",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/gripper_stl_by_ftobler/gripperHolePlateWithPenHolder_by_Leandro.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/gripper_stl_by_ftobler/gripper_screw_secure.stl",
+      "bytes": 103284,
+      "sha256": "6a933c6198d8e21eec44aebb3399213f174aba70d2162088ff680b5b61339335",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/gripper_stl_by_ftobler/gripper_screw_secure.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/gripper_stl_by_ftobler/gripper_shaft.stl",
+      "bytes": 166184,
+      "sha256": "6236d561df2f1e471b44908c3e85bfac8ecf23d00c0bbd28c0a635a6a61c7a01",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/gripper_stl_by_ftobler/gripper_shaft.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/pen_plotter.stl",
+      "bytes": 183284,
+      "sha256": "395061970b3acf4880a945f7e8aa4826656604f97ad3b292796c6358ea84350a",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/pen_plotter.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/servo_gripper_stl_by_20sffactory/gripperFinger_by_ftobler.stl",
+      "bytes": 242684,
+      "sha256": "ac66983cf0d7fc97fae6da69f6353ab12e78ba3463d20835d7ad65ed9f1896c6",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/servo_gripper_stl_by_20sffactory/gripperFinger_by_ftobler.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/servo_gripper_stl_by_20sffactory/gripper_screw_secure.stl",
+      "bytes": 103284,
+      "sha256": "6a933c6198d8e21eec44aebb3399213f174aba70d2162088ff680b5b61339335",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/servo_gripper_stl_by_20sffactory/gripper_screw_secure.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripperBase.stl",
+      "bytes": 286884,
+      "sha256": "2b4e9a2f9e7123b5a02167eafeb89acf2e49b82e60c700640f7c2cd0e023acc1",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripperBase.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripperBaseWithPenHolder.stl",
+      "bytes": 383784,
+      "sha256": "405d840ad7a58e1a80269059cbc7de99638751794e9f8a8580b25359de573d08",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripperBaseWithPenHolder.stl"
+    },
+    {
+      "path": "CAD Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripper_shaft.stl",
+      "bytes": 321884,
+      "sha256": "5271270f540b6ba2103d99ee40b3a6d2ae40137194088018feab320db680665d",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/CAD%20Files/toolheads_stl/servo_gripper_stl_by_20sffactory/servo_gripper_shaft.stl"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1835,
+      "sha256": "d7682ba9327450fca19ea5c0dbc2b9dd254120ee37e22eb47a74b06dba15a36c",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/README.md"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 35129,
+      "sha256": "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/LICENSE"
+    },
+    {
+      "path": "arduino_firmware/robotArm_v0.81/config.h",
+      "bytes": 4956,
+      "sha256": "01b912e7c7ee2253bb885ec0c086124a5a2b26268f47d9e390db3c8c19eb8b39",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/arduino_firmware/robotArm_v0.81/config.h"
+    },
+    {
+      "path": "arduino_firmware/robotArm_v0.81/robotGeometry.cpp",
+      "bytes": 1610,
+      "sha256": "75115030d677cf0453ea6c43636ffb942e081c1f7cf71bba1d5f2aa95fa34284",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/arduino_firmware/robotArm_v0.81/robotGeometry.cpp"
+    },
+    {
+      "path": "arduino_firmware/robotArm_v0.81/robotGeometry.h",
+      "bytes": 604,
+      "sha256": "0dcced0480d6f5db4c695d402583071298440240a95a4842fc758b7648678f22",
+      "url": "https://raw.githubusercontent.com/20sffactory/community_robot_arm/6c2f57390f0186f47bb199f06c875dedf8de268f/arduino_firmware/robotArm_v0.81/robotGeometry.h"
+    }
+  ]
+}

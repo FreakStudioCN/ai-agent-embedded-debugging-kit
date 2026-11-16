@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RobotArm 运动仿真</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">R</span><div><h1>RobotArm <span>运动仿真</span></h1><p>Community Robot Arm · ZCJD 夹爪</p></div></div>
+    <div class="top-actions"><span class="mode">运动学预览</span><a href="./gripper.html" style="color:#c7baff;text-decoration:none;font-size:12px">夹爪模型</a><button id="camera-toggle">摄像头</button><button id="reset-view">重置视角</button></div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <section>
+        <div class="section-heading"><h2>目标位置</h2><span>mm</span></div>
+        <div class="xyz-inputs">
+          <label class="axis-x">X<input id="target-x" type="number" value="0" step="1"></label>
+          <label class="axis-y">Y<input id="target-y" type="number" value="174" step="1"></label>
+          <label class="axis-z">Z<input id="target-z" type="number" value="120" step="1"></label>
+        </div>
+        <label class="field-inline">进给速度<input id="speed" type="number" min="5" max="1000" value="20"><span>mm/s</span></label>
+        <div class="button-row"><button class="primary" id="preview-target" disabled>预览移动</button><button id="reference-pose" disabled>参考姿态</button></div>
+        <p class="field-note">原点位于肩轴中心，+Y 向前，+Z 向上。</p>
+        <div class="jog-grid" aria-label="目标坐标微调">
+          <button data-jog="x,-1">X −</button><button data-jog="y,-1">Y −</button><button data-jog="z,-1">Z −</button>
+          <button data-jog="x,1">X ＋</button><button data-jog="y,1">Y ＋</button><button data-jog="z,1">Z ＋</button>
+        </div>
+        <label class="field-inline">步长<select id="jog-step"><option>1</option><option selected>5</option><option>10</option></select><span>mm</span></label>
+      </section>
+      <section>
+        <div class="section-heading"><h2>关节调节</h2><span>°</span></div>
+        <label class="slider-label">底座旋转 <output id="base-value">0.0°</output><input id="base" type="range" min="-90" max="90" step="0.1" value="0"></label>
+        <label class="slider-label">大臂仰角 <output id="shoulder-value">90.0°</output><input id="shoulder" type="range" min="-60" max="180" step="0.1" value="90"></label>
+        <label class="slider-label">肘部相对角 <output id="elbow-value">−90.0°</output><input id="elbow" type="range" min="-142.32" max="-39.21" step="0.1" value="-90"></label>
+        <label class="slider-label">夹爪开合 <output id="grip-value">70%</output><input id="grip" type="range" min="0" max="1" step="0.01" value="0.7"></label>
+        <div class="button-row"><button id="close-gripper" disabled>闭合夹爪</button><button id="open-gripper" disabled>张开夹爪</button></div>
+        <p class="field-note">爪口净开度 <output id="grip-gap">—</output><br>夹持中心 X / Y / Z（mm）<br><output id="grip-contact">—</output></p>
+        <p class="field-note" id="servo-targets">舵机1 — · 舵机2 —</p>
+        <p class="field-note">I/J 记录舵机角度目标，M3/M5 播放夹爪开合。</p>
+      </section>
+      <section>
+        <div class="section-heading"><h2>轨迹程序</h2><button class="text-button" id="load-demo">载入示例</button></div>
+        <textarea id="program" spellcheck="false" aria-label="G-code 程序">G1 X-35 Y180 Z120 F20
+G1 X-35 Y190 Z100
+G4 S0.5
+M3
+G1 X35 Y190 Z100
+G1 X35 Y180 Z140
+M5
+G1 X0 Y174 Z120</textarea>
+        <div class="button-row"><button id="check-program" disabled>检查轨迹</button><button class="primary" id="play-program" disabled>播放程序</button></div>
+        <div class="button-row"><button id="pause" disabled>暂停</button><button id="stop" disabled>停止</button><button id="export-program">导出 G-code</button></div>
+        <p class="field-note">支持 G0/G1、G4 S、G28 和协议中的 M 指令。G28 在预览中直接切换参考姿态。</p>
+      </section>
+      <details class="parameters">
+        <summary>模型与参考范围</summary>
+        <p class="field-note">默认参数取自上游 v0.81 固件。实物连杆、工具偏移和原点需要测量校准。</p>
+        <div class="parameter-grid">
+          <label>大臂 mm<input data-config="lowerLength" type="number" value="120" min="20" max="1000"></label>
+          <label>小臂 mm<input data-config="upperLength" type="number" value="120" min="20" max="1000"></label>
+          <label>工具偏移 mm<input data-config="toolOffset" type="number" value="54" min="0" max="500"></label>
+          <label>肩轴离台面 mm<input data-config="shoulderHeight" type="number" value="130.2" min="20" max="1000"></label>
+          <label>夹爪安装前伸 mm<input data-config="gripperMountX" type="number" value="34.2" step="0.1" min="-200" max="200"></label>
+          <label>夹爪安装 Z mm<input data-config="gripperMountZ" type="number" value="4.2" step="0.1" min="-200" max="200"></label>
+          <label>底座最小 °<input data-config="baseMin" type="number" value="-90"></label>
+          <label>底座最大 °<input data-config="baseMax" type="number" value="90"></label>
+          <label>肘部最小 °<input data-config="elbowMin" type="number" value="-142.32" step="0.01"></label>
+          <label>肘部最大 °<input data-config="elbowMax" type="number" value="-39.21" step="0.01"></label>
+          <label>Z 最低 mm<input data-config="zMin" type="number" value="-140"></label>
+          <label>Z 最高 mm<input data-config="zMax" type="number" value="150"></label>
+        </div>
+        <div class="button-row"><button id="apply-config">应用参数</button><button id="restore-config">恢复默认</button></div>
+      </details>
+      <details class="sources"><summary>模型来源与仿真范围</summary>
+        <p>机械臂 STL 来自 20sffactory / Community Robot Arm，基于 Florin Tobler 原作。夹爪使用 ZCJD 照片重建装配。</p>
+        <p>XYZ 为指令参考点。夹爪顶端翻边压在腕部支架上面，翻边底面与支架顶面保留0.2 mm显示间隙，爪指朝下、舵机朝内。安装前伸与 Z 可在参数中校准。完整开合的预览时长设为 0.65 秒。</p>
+        <p>检查连杆可达性、参考角度及高度范围。速度按恒定进给估算，碰撞、负载、间隙和限位开关动作需实机验证。</p>
+        <a href="models/upstream/CAD%20Files/robot_arm.step" download>下载完整 STEP 模型</a>
+        <a href="https://github.com/20sffactory/community_robot_arm" target="_blank" rel="noopener">上游模型与装配资料</a>
+        <p>CAD · CC BY 4.0　Three.js · MIT</p>
+      </details>
+    </aside>
+    <div class="workspace">
+      <div id="viewport"><div id="loading">正在加载模型…</div></div>
+      <div class="view-tools"><button data-view="perspective" class="active">透视</button><button data-view="front">正视</button><button data-view="side">侧视</button><button data-view="top">俯视</button><label><input id="show-path" type="checkbox" checked>轨迹</label><label><input id="show-axes" type="checkbox" checked>坐标轴</label></div>
+      <div class="readout"><div><span>指令 X</span><strong id="actual-x">0.0</strong><small>mm</small></div><div><span>指令 Y</span><strong id="actual-y">174.0</strong><small>mm</small></div><div><span>指令 Z</span><strong id="actual-z">120.0</strong><small>mm</small></div></div>
+      <div class="legend"><span class="axis-x">X</span><span class="axis-y">Y</span><span class="axis-z">Z</span><span>金色 · 指令参考点　青色 · 夹持中心　拖动旋转 · 滚轮缩放</span></div>
+      <div class="statusbar"><span id="status" role="status">等待模型加载</span><span id="program-progress">0.0 / 0.0 s</span></div>
+      <div class="timeline"><div id="timeline-progress"></div></div>
+      <div id="camera-panel" hidden><div class="section-heading"><h2>实时摄像头</h2><button id="camera-close" aria-label="关闭摄像头画面">×</button></div><img id="camera-image" alt="机械臂摄像头画面"><p id="camera-message">摄像头服务端口 8766</p></div>
+    </div>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

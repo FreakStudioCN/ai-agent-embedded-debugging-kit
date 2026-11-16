@@ -8,3 +8,17 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+*.pid
+.runtime/
+/robot_arm_driver/
+/robot_arm_driver-*.zip
+/camera_checks/
+~$*
+/simulator/preview*.jpg
+/夹爪模型/建模工具/
+/夹爪模型/*.jpg
+/夹爪模型/*.docx
+/夹爪模型/重建模型/preview.jpg
+/夹爪模型/重建模型/parts/
+/夹爪模型/重建模型/*.step
+/夹爪模型/重建模型/*.stl

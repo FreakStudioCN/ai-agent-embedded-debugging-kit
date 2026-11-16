@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZCJD 夹爪照片重建</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+  <style>
+    .top-actions a{color:#c7baff;text-decoration:none;font-size:12px;padding:8px}
+    .download-links{display:grid;gap:10px}.download-links a{display:block;padding:10px;border:1px solid #45516b;border-radius:7px;color:#d4c9ff;text-decoration:none;font-size:12px}
+    .dimensions{width:100%;border-collapse:collapse;font-size:12px}.dimensions td{padding:9px 0;border-bottom:1px solid #2a3447}.dimensions td:last-child{text-align:right;font-family:Consolas,monospace;color:#d5caff}
+    .parts{display:grid;gap:12px}.parts label{font-size:12px;color:#bac6d7;display:flex;gap:8px;align-items:center}.parts input{accent-color:#b29dff}
+    .readout{gap:30px}.readout strong{font-size:21px}.readout small{font-size:10px}.readout>div{min-width:75px}
+    .provenance{line-height:1.8;color:#91a1b9;font-size:11px}.model-note{border-left:2px solid #9c86e9;padding-left:10px;margin-top:16px;color:#aab8ca;font-size:12px;line-height:1.8}
+    #opening{margin-bottom:18px}.dimension-tag{position:absolute;bottom:80px;right:25px;color:#929eb2;font-size:11px}
+    @media(max-width:600px){.readout{top:80px;gap:15px}.readout strong{font-size:17px}.top-actions a{font-size:10px}.dimension-tag{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">G</span><div><h1>ZCJD <span>夹爪照片重建</span></h1><p>参数化 CAD · 毫米制</p></div></div>
+    <div class="top-actions"><a href="./">机械臂仿真</a><button id="reset-view">重置视角</button></div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <section>
+        <div class="section-heading"><h2>平行夹爪</h2><span>16 个装配件</span></div>
+        <label class="slider-label">开合程度 <output id="opening-value">70%</output><input id="opening" type="range" min="0" max="1" step="0.01" value="0.7"></label>
+        <div class="button-row"><button id="close-grip">闭合</button><button id="open-grip">张开</button><button id="animate-grip" class="primary">演示开合</button></div>
+        <label class="slider-label">分解视图 <output id="explode-value">0%</output><input id="explode" type="range" min="0" max="1" step="0.01" value="0"></label>
+        <p class="model-note">尺寸来自卷尺照片估算。齿轮、孔径和配合间隙采用参数化重建值，制造前需实测复核。</p>
+      </section>
+      <section>
+        <div class="section-heading"><h2>主要尺寸</h2><span>mm</span></div>
+        <table class="dimensions"><tbody id="dimensions"></tbody></table>
+      </section>
+      <section>
+        <div class="section-heading"><h2>显示零件</h2></div>
+        <div class="parts">
+          <label><input type="checkbox" data-role="fixed" checked>安装座与固定销轴</label>
+          <label><input type="checkbox" data-role="gear" checked>扇形齿轮连杆</label>
+          <label><input type="checkbox" data-role="link" checked>金属平行连杆</label>
+          <label><input type="checkbox" data-role="finger" checked>紫色爪指</label>
+          <label><input type="checkbox" data-role="pin" checked>爪指销轴</label>
+          <label><input type="checkbox" id="wireframe">线框</label>
+        </div>
+      </section>
+      <section>
+        <div class="section-heading"><h2>模型文件</h2></div>
+        <div class="download-links">
+          <a href="./models/custom_gripper/zcjd_gripper.step" download>STEP 装配模型 · 张开姿态</a>
+          <a href="./models/custom_gripper/zcjd_gripper_closed.step" download>STEP 装配模型 · 闭合姿态</a>
+          <a href="./models/custom_gripper/zcjd_gripper_assembly.stl" download>STL 装配模型</a>
+          <a href="./models/custom_gripper/parameters.json" download>可编辑尺寸参数 JSON</a>
+        </div>
+        <p class="field-note">分件 STL 与参数化生成脚本保存在“夹爪模型 / 重建模型”目录。</p>
+      </section>
+      <section class="provenance">根据用户提供的 10 张照片建立。底板宽长约 ±2 mm，连杆与爪指尺寸约 ±2.5 mm，误差尚待实测确认。开合采用两组平行四连杆及同步反向齿轮关系。</section>
+    </aside>
+    <div class="workspace">
+      <div id="viewport"><div id="loading">正在加载夹爪模型…</div></div>
+      <div class="view-tools"><button data-view="perspective" class="active">透视</button><button data-view="top">俯视</button><button data-view="bottom">底面</button><button data-view="front">正视</button></div>
+      <div class="readout"><div><span>爪口净开度</span><strong id="gap">—</strong><small>mm</small></div><div><span>夹持中心距安装边</span><strong id="reach">—</strong><small>mm</small></div><div><span>单侧转角</span><strong id="angle">—</strong><small>°</small></div></div>
+      <div class="legend"><span>拖动旋转 · 滚轮缩放 · 右键平移</span></div><span class="dimension-tag">X 横向 · Y 朝向指尖 · Z 垂直底板</span>
+      <div class="statusbar"><span id="status" role="status">正在加载</span><span>照片尺寸重建</span></div>
+    </div>
+  </main>
+  <script type="module" src="./gripper.js"></script>
+</body>
+</html>

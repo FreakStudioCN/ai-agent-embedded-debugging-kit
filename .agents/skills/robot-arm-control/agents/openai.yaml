@@ -1,0 +1,4 @@
+interface:
+  display_name: "机械臂自主控制与调试"
+  short_description: "结合长连接串口、实时摄像头和HTML仿真自主观察与调试机械臂"
+  default_prompt: "使用 $robot-arm-control 连接当前机械臂，结合实时画面完成我指定的观察或运动任务。"

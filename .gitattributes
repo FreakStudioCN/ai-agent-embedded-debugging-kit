@@ -1,0 +1,9 @@
+# Preserve pinned asset hashes and binary payloads across Windows checkouts.
+simulator/models/** -text -diff
+simulator/models/custom_gripper/*.json text eol=lf
+simulator/models/upstream/** -text -diff
+simulator/vendor/** -text -diff
+*.stl binary
+*.step binary
+*.stp binary
+*.docx binary

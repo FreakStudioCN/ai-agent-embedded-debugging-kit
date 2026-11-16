@@ -1,122 +1,101 @@
-# RobotArm UART · MicroPython 机械臂串口驱动
+# RobotArm 驱动与 Codex 观察调试环境
 
-通过115200/8N1串口控制使用G/M指令协议的机械臂。协议依据项目提供的《串口通信指令.docx》，适用于该协议兼容控制器。
+仓库统一维护 MicroPython UART 驱动、真实摄像头、HTML 三维仿真和 Codex 操作 skill。工作方式为观察、提出假设、执行小动作、等待停稳、再次观察并记录结论。
 
-驱动使用调用者传入的UART对象，每次发送一条指令并等待完成回复 `ok`。提供XYZ移动、回零、夹爪控制、电机使能、IO和12V输出接口。版本为0.1.0，采用MIT许可证。
+## 给 Codex 的入口
+
+实时观看探索请运行 `python exploration_monitor.py` 或双击 `start_monitor.cmd`。这是独立 Tk 窗口，直接订阅现有 MJPEG 流并读取真实事件日志。按用户确认默认旋转180°，提供双语摘要、动作状态、时间线和事件回放。使用方法见 [监控说明](docs/monitor.md)。
+
+打开本仓库后读取 [AGENTS.md](AGENTS.md) 与 [robot-arm-control skill](.agents/skills/robot-arm-control/SKILL.md)。可以直接给出“观察周围”“小步验证 X/Y/Z 方向”“对照实物调试夹爪”等目标。用户明确授权自主探索后，Codex 可以根据实时画面选择动作和观察顺序。
+
+首次实体探索需一次确认无人进入活动范围、明确的小步安全路径和操作者可直接切断执行器电源。此后根据画面持续推进。历史测试目标和仿真参考范围需要结合当前现场使用。
 
 ## 目录
 
-```text
-robot_arm_driver/
-├── code/
-│   ├── robot_arm.py       # MicroPython串口驱动
-│   ├── main.py            # ESP32示例，显式调用main()执行
-│   └── pc_control.py      # CPython / pyserial适配和命令行入口
-├── tests/
-│   └── test_robot_arm.py  # 模拟UART协议测试
-├── package.json          # mip包清单，仅安装robot_arm.py
-├── requirements-pc.txt   # 电脑端可选依赖
-├── .gitignore
-├── LICENSE
-└── README.md
-```
+| 路径 | 用途 |
+| --- | --- |
+| `code/robot_arm.py` | MicroPython 单文件 UART 驱动 |
+| `code/pc_control.py` | PCUART 与单条命令 CLI |
+| `code/pc_session.py` | 持续串口会话、取图、等待与 JSONL 日志 |
+| `code/main.py` | ESP32 示例，显式调用 main() 会使能并回零 |
+| `camera_server.py` | FFmpeg 共享采集与 MJPEG/单帧接口 |
+| `simulator/index.html` | 整机运动学、轨迹与摄像头调试界面 |
+| `simulator/gripper.html` | 夹爪局部结构与开合调试 |
+| `.agents/skills/robot-arm-control/` | Codex 自主观察与操作指导 |
+| `docs/driver.md` | 驱动 API、接线、安装及错误处理 |
+| `夹爪模型/重建模型/` | 参数化重建源码及尺寸假设 |
+| `.runtime/` | 本机运行日志与照片，Git 忽略 |
 
-## 安装到MicroPython
+根目录 `robot_arm.py`、`example.py` 保留可独立复制到 MicroPython 的分发副本。源码维护在 `code/`，修改后运行 `python tools/sync_driver.py` 同步，测试会核对一致性。根目录 `pc_control.py` 加载 `code/` 实现。原 `robot_arm_driver/` 内容保留为本机旧副本并被 Git 忽略，Git 历史及 origin 已迁入当前根目录。
 
-将 `code/robot_arm.py` 复制到开发板根目录或 `/lib/robot_arm.py`，随后使用 `from robot_arm import RobotArm` 导入。驱动本身使用MicroPython内置模块。
+## 启动调试环境
 
-板卡TX接控制器RX，RX接控制器TX，GND共地。UART使用115200 baud、8数据位、无校验、1停止位。GPIO17/16为以下ESP32示例引脚，可按实际板卡调整。控制器接口电平需与板卡或电平转换器匹配，原协议文档未说明TTL、RS232、RS485及电压。
-
-```python
-from machine import UART, Pin
-from robot_arm import RobotArm
-
-uart = UART(1, baudrate=115200, bits=8, parity=None, stop=1,
-            tx=Pin(17), rx=Pin(16), timeout=0, timeout_char=2)
-arm = RobotArm(uart, timeout_ms=60000, debug=True)
-arm.dwell(0)  # 通信检查
-
-# 明确准备执行机械动作时调用
-# arm.enable_motors()
-# arm.home(timeout_ms=120000)
-# arm.move(x=5, y=174, z=120, speed=5)
-# arm.open_gripper()
-```
-
-`code/main.py` 保留可运行的ESP32示例。导入后调用 `main.main()` 会执行电机使能和回零。XYZ示例坐标来自本项目实机测试，使用时应匹配自己的机械臂坐标与运动范围。
-
-`package.json` 使用mip的相对源路径格式。上传到支持mip的仓库后，清单仅安装驱动模块，电脑端适配和运行示例通过文件方式使用。
-
-## 电脑端控制
-
-在仓库根目录运行以下命令安装电脑端依赖并检查通信。
+安装 Python、pyserial，摄像头另需 PATH 中有 FFmpeg。仿真检查需要 Node.js。
 
 ```powershell
 python -m pip install -r requirements-pc.txt
-python -B code/pc_control.py --port COM23 --timeout 5000
+python -B camera_server.py
 ```
 
-默认发送 `G4 S0`。指定 `--command` 可执行单条指令，例如回零。
+在其他终端启动仿真与交互串口。
 
 ```powershell
-python -B code/pc_control.py --port COM23 --timeout 120000 --command "G28"
+python -B simulator/serve.py
+python -u code/pc_session.py --port COM23
 ```
 
-电脑端默认在打开串口后等待2秒，使用 `--startup-delay` 可调整。UART适配器会预先将DTR/RTS设置为False，USB驱动仍可能在打开时切换信号。多条动作应保持同一个连接与驱动实例，按顺序等待每条命令完成。
+相机默认设备 `2M`、1280×720、10 FPS，可用 `--device`、`--width`、`--fps` 调整。已有采集服务时复用它。
 
-## API
+- 摄像头页面为 http://127.0.0.1:8766/ 。
+- 单帧接口为 http://127.0.0.1:8766/snapshot.jpg 。
+- 状态接口为 http://127.0.0.1:8766/api/status 。
+- 整机仿真为 http://127.0.0.1:8767/ ，夹爪页为 http://127.0.0.1:8767/gripper.html 。
 
-```python
-arm = RobotArm(uart, timeout_ms=30000, debug=False)
+HTML 中的动作控制用于仿真，实物通过串口会话操作。界面、skill 和 UART 日志构成同一调试环境。
+
+## 交互串口
+
+串口参数为115200/8N1。当前设备曾使用 COM23，运行前核对实际端口。程序启动只打开连接，在同一终端逐行输入。
+
+```text
+G4 S0
+:status
+:snapshot
+:wait 5
+:await
+:quit
 ```
 
-控制方法支持 `timeout_ms` 参数，收到完成回复后返回 `"ok"`。
+`G4 S0` 检查通信，`:snapshot` 保存新图并返回绝对路径，`:await` 继续等候超时指令的原回复。`:quit` 释放串口，保持电机状态。可以输入单行 G/M 指令，或将指令与等待组合。
 
-| 方法 | 指令 | 功能 |
-| --- | --- | --- |
-| `move(x=None, y=None, z=None, speed=None, i=None, j=None, rapid=False)` | G1 / G0 | XYZ直线移动及I/J角度目标 |
-| `home()` | G28 | 回零 |
-| `dwell(seconds)` | G4 S | 控制器延时 |
-| `set_gripper_angles(i=None, j=None)` | G1 I/J | 夹爪舵机角度 |
-| `close_gripper()` / `open_gripper()` | M3 / M5 | 闭合 / 张开 |
-| `enable_motors()` / `disable_motors()` | M17 / M18 | 使能 / 禁用步进电机 |
-| `set_io(1, high)` | M1 / M2 | IO1高低电平 |
-| `set_io(2, high)` | M6 / M7 | IO2高低电平 |
-| `set_output_12v("A" / "B" / "OFF")` | M121 / M122 / M123 | 12V输出模式 |
-| `command(text)` | 原始单条G/M指令 | 发送并等待完成 |
-| `wait_done()` | 接收待确认命令回复 | 无待确认命令时返回None |
-| `recover(controller_idle=True)` | 清理本地通信状态 | 调用前确认控制器空闲且输入已清理 |
-
-XYZ单位为mm，`speed` 单位为mm/s，最小值5。I/J为角度目标，与XYZ同条发送时即时生效。G0/G1在原协议中的逻辑相同。高层接口省略未提供参数，浮点参数输出为最多6位小数。
-
-原始指令接口会校验单行ASCII格式及G/M前缀。工作空间、角度范围和12V模式A/B含义由实际控制器与硬件决定。原文出现E参数但缺少语义定义，可在确认含义后通过原始指令接口使用。
-
-## 超时与连接管理
-
-驱动兼容CR、LF、CRLF结束的回复和裸 `ok`，支持分段读取、部分写入和计时回绕。控制器最多缓存15条命令，本库保持一条待确认命令。每个UART由同一个调用者串行使用。
-
-`ArmTimeout` 表示命令执行状态尚未确定。使用同一个实例的 `wait_done()` 继续等待该命令的回复，避免重复发送动作。`ArmError` 表示串口或控制器异常。故障恢复前需确认控制器已空闲、旧回复已结束、残留输入已清理。
-
-```python
-from robot_arm import ArmError, ArmTimeout
-
-try:
-    arm.home(timeout_ms=120000)
-except ArmTimeout:
-    print("待确认指令", arm.pending)
-    arm.wait_done(timeout_ms=120000)
-except ArmError as exc:
-    print("控制器异常", exc)
+```json
+{"command":"G1 X5 F5","settle":5}
 ```
 
-UART生命周期由调用者管理，结束通信时调用 `uart.deinit()`。原协议未提供位置查询、运动状态查询或急停命令。`M18` 会释放步进电机保持力。电脑端命令完成回复表明控制器确认，实际坐标精度需要外部量测。
+这个目标只是语法示例。实体动作按当前授权与实际路径选择。`M17` 使能电机，`G28` 回零；回零路径明确安全后再执行。`M3` 闭合、`M5` 打开夹爪。XYZ 为毫米，F 为毫米每秒且最小5，I/J 为即时角度目标。详细 IO/12V 等接口见驱动文档。
+
+2026-11-16 实测曾在收到 `ok` 后观察到继续移动。回复、等待时间与视觉停稳分别记录。程序输出 `physical_completion=unverified`，实际完成需结合新鲜画面确认。当前资料没有位置反馈与已确认的硬件急停指令，目标坐标只能作为指令记录。
+
+同一端口保持一个调用者，每次一条运动指令。超时保留 pending 状态，查看画面并等待原回复。120秒 UART 超时用于停止等待回复并阻止后续发送，无法停止已在执行的物理动作。
+
+## MicroPython 安装
+
+将 `code/robot_arm.py` 复制到开发板根目录或 `/lib/robot_arm.py`，使用 `from robot_arm import RobotArm`。`package.json` 保持0.1.0驱动包路径，仅安装该模块。接线、电平注意事项与 API 见 [驱动文档](docs/driver.md)。
 
 ## 验证
 
-在仓库根目录运行现有协议测试。
+图像局部位移分析可用 `python -m pip install -r requirements-vision.txt` 安装可选依赖，再运行 `python tools/compare_frames.py BEFORE.jpg AFTER.jpg --region X0 Y0 X1 Y1`。固定背景的像素变化辅助观察记录，物理到位仍需结合现场判断。
 
 ```powershell
 python -B -m unittest discover -s tests -v
+node simulator/check_math.mjs
+node simulator/check_gripper.mjs
 ```
 
-测试覆盖指令映射、数值格式、分段回复、部分写入、超时锁定、迟到回复、异常恢复及计时回绕。2026-11-16已在Windows通过COM23的CH340控制器验证串口完成回复，并执行回零、往返移动、夹爪开合与多轮运动。MicroPython开发板UART端仍需部署验证。
+安装 `trimesh` 与 `manifold3d` 后，可运行 `python -B simulator/check_mount.py` 核对夹爪与腕部交集。参数化 CAD 重建需要 `cadquery-ocp-novtk`，本机的独立安装目录为 `夹爪模型/建模工具`。更多模型假设见重建 README。
+
+## 模型与资料
+
+模型来源、固定提交、校验值与第三方许可见 [仿真说明](simulator/README.md)。上游 CAD 和图形采用 CC BY 4.0，上游参考固件采用 GPL-3.0，Three.js 采用 MIT，各自许可文件随资源保留。根目录 MIT 适用于本项目原创代码，第三方材料遵循其各自许可。
+
+实拍照片、摄像头历史抓帧、Word 建模委托文档、临时依赖和旧ZIP留在本机。夹爪和相机支架的照片及尺寸整理位于[建模需求云文档](https://f1829ryac0m.feishu.cn/docx/RSxudp1YDoLvPUx1OuncDcQJn7r)。相机十字形两组相对孔中心距17 mm由用户提供，其余照片估算尺寸待复核。

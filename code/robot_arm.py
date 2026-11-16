@@ -1,6 +1,8 @@
 """MicroPython UART robot arm driver. Source: 串口通信指令.docx.
 
-One command in flight; an 'ok' acknowledges completed execution.
+One command in flight; 'ok' acknowledges the command at the protocol level.
+Live observation found motion continuing after 'ok'. Verify physical settling
+separately before planning the next movement.
 Constructing this object never sends commands or moves the arm.
 """
 
@@ -109,7 +111,7 @@ class RobotArm:
         raise ArmError("UART input remains busy; check controller output")
 
     def command(self, text, timeout_ms=None):
-        """Send one ASCII G/M command and wait for completion; return 'ok'.
+        """Send one ASCII G/M command and wait for acknowledgement; return 'ok'.
 
         No automatic retries. After a timeout, wait_done() can continue waiting
         for the SAME command. Never use a second instance to bypass this guard.
@@ -159,7 +161,7 @@ class RobotArm:
             raise
 
     def wait_done(self, timeout_ms=None):
-        """Wait for pending command; timeout leaves it pending, without resend."""
+        """Wait for acknowledgement; timeout leaves it pending, without resend."""
         timeout = self.timeout_ms if timeout_ms is None else _positive_int(timeout_ms, "timeout_ms")
         if self._fault:
             raise ArmError("UART/protocol fault; recover after checking controller state")

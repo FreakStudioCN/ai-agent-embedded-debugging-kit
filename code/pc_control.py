@@ -65,7 +65,7 @@ def main():
             arm.dwell(0, timeout_ms=args.timeout)
         else:
             arm.command(args.command, timeout_ms=args.timeout)
-        print("PASS: controller acknowledged execution with ok")
+        print("PASS: controller replied ok; verify physical settling separately")
         return 0
     except (ArmError, serial.SerialException, ValueError) as exc:
         print("FAIL:", exc, file=sys.stderr)
