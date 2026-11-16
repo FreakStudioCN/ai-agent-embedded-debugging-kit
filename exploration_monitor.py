@@ -33,9 +33,7 @@ EVENT_LABELS = {"sending": "发送 / Sent", "acknowledged": "回复 / Acknowledg
                 "snapshot": "取图 / Snapshot", "ready": "串口连接 / Serial connected", "closed": "串口关闭 / Serial closed",
                 "status": "状态 / Status", "ack_wait": "等待回复 / Await acknowledgement",
                 "motion_verified": "视觉停稳 / Visually settled", "timeout": "超时 / Timeout", "error": "异常 / Error",
-                "interrupted": "中断 / Interrupted", "note": "记录 / Note",
-                "speech_start": "语音开始 / Speech started", "speech_complete": "语音完成 / Speech completed",
-                "speech_error": "语音异常 / Speech error", **TITLES}
+                "interrupted": "中断 / Interrupted", "note": "记录 / Note", **TITLES}
 
 
 class Monitor:
@@ -158,11 +156,6 @@ class Monitor:
             text = str(record.get("seconds", "")) + " s"
         if kind == "snapshot":
             text = Path(record.get("path", "")).name
-        if kind == "speech_start":
-            text = str(text) + "\n" + str(record.get("utterance", ""))
-        if kind == "speech_complete":
-            playback = record.get("playback", {})
-            text = str(text) + "\n" + str(playback.get("voice", "")) + "\n" + str(playback.get("output", ""))
         self.timeline.configure(state="normal")
         self.timeline.insert("end", when + "  " + EVENT_LABELS.get(kind, kind) + "\n" + str(text) + ("\n" + english if english else "") + "\n\n")
         # Rendering stays bounded; full records remain in the original JSONL files.
