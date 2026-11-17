@@ -1,16 +1,13 @@
 """Parametric B-rep reconstruction of the user's photographed ZCJD gripper.
 
-Uses the isolated cadquery-ocp-novtk package in ../建模工具.
+Requires cadquery-ocp-novtk. Run from any working directory.
 Output lengths are millimetres. Photo estimates are recorded in parameters.json.
 """
 from pathlib import Path
 import json
 import math
-import shutil
-import sys
 
 ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT.parent / "建模工具"))
 
 from OCP.BRep import BRep_Builder
 from OCP.BRepAlgoAPI import BRepAlgoAPI_Common, BRepAlgoAPI_Cut, BRepAlgoAPI_Fuse
@@ -401,12 +398,6 @@ def main():
                 "coordinate_system": "X lateral, Y toward fingers, Z normal to base plate; rear base edge Y=0; underside Z=0",
                 "precision": "Photo-scale reconstruction; nominal gear and bore dimensions require physical measurement"}
     (ROOT / "model.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    # Serve the same model from the existing browser simulator.
-    target = ROOT.parents[1] / "simulator" / "models" / "custom_gripper"
-    target.mkdir(parents=True, exist_ok=True)
-    for file in ["model.json", "parameters.json", "zcjd_gripper.step", "zcjd_gripper_closed.step", "zcjd_gripper_assembly.stl"]:
-        shutil.copy2(ROOT / file, target / file)
-    shutil.copytree(neutral, target / "parts", dirs_exist_ok=True)
     print("Exported STEP, assembly STL, %d neutral part STL files and model manifest" % len(shapes), flush=True)
 
 

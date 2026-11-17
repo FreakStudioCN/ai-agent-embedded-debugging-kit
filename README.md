@@ -23,7 +23,7 @@
 | `simulator/gripper.html` | 夹爪局部结构与开合调试 |
 | `.agents/skills/robot-arm-control/` | Codex 自主观察与操作指导 |
 | `docs/driver.md` | 驱动 API、接线、安装及错误处理 |
-| `夹爪模型/重建模型/` | 参数化重建源码及尺寸假设 |
+| `simulator/models/custom_gripper/` | 夹爪模型、参数化建模源码及尺寸假设 |
 | `.runtime/` | 本机运行日志与照片，Git 忽略 |
 
 根目录 `robot_arm.py`、`example.py` 保留可独立复制到 MicroPython 的分发副本。源码维护在 `code/`，修改后运行 `python tools/sync_driver.py` 同步，测试会核对一致性。根目录 `pc_control.py` 加载 `code/` 实现。原 `robot_arm_driver/` 内容保留为本机旧副本并被 Git 忽略，Git 历史及 origin 已迁入当前根目录。
@@ -92,10 +92,10 @@ node simulator/check_math.mjs
 node simulator/check_gripper.mjs
 ```
 
-安装 `trimesh` 与 `manifold3d` 后，可运行 `python -B simulator/check_mount.py` 核对夹爪与腕部交集。参数化 CAD 重建需要 `cadquery-ocp-novtk`，本机的独立安装目录为 `夹爪模型/建模工具`。更多模型假设见重建 README。
+安装 `trimesh` 与 `manifold3d` 后，可运行 `python -B simulator/check_mount.py` 核对夹爪与腕部交集。参数化 CAD 重建需要 `cadquery-ocp-novtk`，生成命令及模型假设见 [夹爪建模说明](simulator/models/custom_gripper/README.md)。
 
 ## 模型与资料
 
 模型来源、固定提交、校验值与第三方许可见 [仿真说明](simulator/README.md)。上游 CAD 和图形采用 CC BY 4.0，上游参考固件采用 GPL-3.0，Three.js 采用 MIT，各自许可文件随资源保留。根目录 MIT 适用于本项目原创代码，第三方材料遵循其各自许可。
 
-实拍照片、摄像头历史抓帧、Word 建模委托文档、临时依赖和旧ZIP留在本机。夹爪和相机支架的照片及尺寸整理位于[建模需求云文档](https://f1829ryac0m.feishu.cn/docx/RSxudp1YDoLvPUx1OuncDcQJn7r)。相机十字形两组相对孔中心距17 mm由用户提供，其余照片估算尺寸待复核。
+本地实拍照片、建模委托资料、运行录像、临时依赖和旧 ZIP 通过 `.gitignore` 排除。相机十字形两组相对孔中心距17 mm由用户提供，其余照片估算尺寸待复核。

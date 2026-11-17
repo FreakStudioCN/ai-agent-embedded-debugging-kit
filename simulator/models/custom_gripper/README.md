@@ -1,6 +1,6 @@
 # ZCJD 夹爪照片重建模型
 
-根据上一级目录中的10张照片和卷尺刻度建立参数化实体装配。模型包含灰色安装底座、舵机安装槽与支撑轨、扇形齿轮连杆、金属平行连杆、紫色带齿爪指和销轴，共16个装配件。
+根据实拍照片和卷尺刻度建立参数化实体装配，原始照片保存在本地。模型包含灰色安装底座、舵机安装槽与支撑轨、扇形齿轮连杆、金属平行连杆、紫色带齿爪指和销轴，共16个装配件。
 
 照片存在透视、遮挡和不同高度的比例误差。主要尺寸为照片估算，厚度、孔径、齿轮模数、齿数及配合间隙包含工程重建假设，制造前需要实测。参数表中的约2–2.5 mm不确定度仅用于标记估算程度，并非检定公差。
 
@@ -21,10 +21,11 @@
 STEP可导入SolidWorks、Fusion、FreeCAD等CAD软件。修改 `parameters.json` 后，在项目根目录运行以下命令重新生成模型。
 
 ```powershell
-python -B "夹爪模型\重建模型\build_model.py"
+python -m pip install cadquery-ocp-novtk==8.0.1.1.0
+python -B simulator/models/custom_gripper/build_model.py
 ```
 
-建模使用上一级目录“建模工具”中独立安装的 `cadquery-ocp-novtk 8.0.1.1.0`，当前为Windows Python 3.14环境。
+建模依赖 `cadquery-ocp-novtk 8.0.1.1.0`。脚本从自身目录读取参数，并将 STEP、STL 和模型清单直接输出到此目录。
 
 ## 当前主要参数
 

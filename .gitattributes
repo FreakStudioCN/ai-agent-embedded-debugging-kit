@@ -1,6 +1,8 @@
 # Preserve pinned asset hashes and binary payloads across Windows checkouts.
 simulator/models/** -text -diff
 simulator/models/custom_gripper/*.json text eol=lf
+simulator/models/custom_gripper/*.py text eol=lf diff
+simulator/models/custom_gripper/*.md text eol=lf diff
 simulator/models/upstream/** -text -diff
 simulator/vendor/** -text -diff
 *.stl binary
