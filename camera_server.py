@@ -126,7 +126,8 @@ class Camera:
             return {"device": self.device, "fps": self.fps, "frame_count": self.frame_count,
                     "healthy": not self.stopped and age is not None and age < 5,
                     "frame_age_seconds": round(age, 3) if age is not None else None,
-                    "frame_utc": self.last_frame_utc, "error": self.error}
+                    "frame_utc": self.last_frame_utc, "error": self.error,
+                    "capture_returncode": self.process.poll(), "capture_logs": list(self.logs)}
 
     def close(self):
         with self.condition:
@@ -210,6 +211,28 @@ class Handler(BaseHTTPRequestHandler):
             self.close_connection = True
 
 
+def reconnect_camera(server, args, stopped):
+    """Recover an ended capture while keeping one owner per physical camera."""
+    while not stopped.wait(1):
+        previous = server.camera
+        if not previous.stopped:
+            continue
+        previous.close()
+        replacement = None
+        try:
+            replacement = Camera(args.ffmpeg,args.device,args.fps,args.width)
+            frame,_ = replacement.get_frame(timeout=3)
+            if frame is None:
+                raise RuntimeError('Camera reconnect produced no fresh frame')
+            server.camera = replacement
+            print('Camera capture reconnected',flush=True)
+        except (OSError,RuntimeError) as error:
+            if replacement:
+                replacement.close()
+            print('Camera reconnect failed: '+str(error),flush=True)
+            stopped.wait(2)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
@@ -218,6 +241,7 @@ def main():
     parser.add_argument("--fps", type=int, default=10)
     parser.add_argument("--width", type=int, default=1280)
     parser.add_argument("--ffmpeg", default=shutil.which("ffmpeg"))
+    parser.add_argument('--reconnect',action='store_true',help='Retry ended capture without opening a second camera owner')
     args = parser.parse_args()
     if not args.ffmpeg:
         parser.error("FFmpeg not found; add to PATH or pass --ffmpeg")
@@ -228,6 +252,8 @@ def main():
     # Bind before starting capture, so an occupied port does not grab the camera.
     server = CameraHTTPServer((args.host, args.port), Handler)
     camera = None
+    stopped = threading.Event()
+    watcher = None
     try:
         camera = Camera(args.ffmpeg, args.device, args.fps, args.width)
         server.camera = camera
@@ -237,13 +263,19 @@ def main():
         print("Camera ready: %s (%d FPS)" % (args.device, args.fps), flush=True)
         print("Browser: http://%s:%d/" % (args.host, args.port), flush=True)
         print("Snapshot: /snapshot.jpg | Status: /api/status", flush=True)
+        if args.reconnect:
+            watcher = threading.Thread(target=reconnect_camera,args=(server,args,stopped),daemon=True)
+            watcher.start()
         server.serve_forever(poll_interval=0.25)
     except KeyboardInterrupt:
         pass
     finally:
+        stopped.set()
+        if watcher:
+            watcher.join(timeout=15)
         server.server_close()
         if camera is not None:
-            camera.close()
+            server.camera.close()
 
 
 if __name__ == "__main__":

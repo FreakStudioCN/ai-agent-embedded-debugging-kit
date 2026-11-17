@@ -1,0 +1,3 @@
+-r requirements-monitor.txt
+-r requirements-vision.txt
+-r requirements-pc.txt

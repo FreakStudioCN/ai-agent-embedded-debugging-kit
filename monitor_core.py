@@ -16,7 +16,7 @@ AXIS = re.compile(r"([XYZ])\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))")
 
 
 def event_time(record):
-    value = record.get("time")
+    value = record.get("time",record.get("timestamp_utc"))
     if not isinstance(value, str):
         return 0.0
     try:
@@ -90,6 +90,12 @@ class MonitorState:
         self.last_time = timestamp
         kind = record.get("event")
         text = record.get("text", "")
+        if kind == "experiment_started":
+            self.summary = {key: "等待本次实验事件" for key in self.summary}
+            self.summary_en = {key: "Waiting for this experiment's events" for key in self.summary}
+            self.annotations = []
+            self.goal = "本次实机演示"
+            self.goal_en = "Current physical demonstration"
         if kind in self.summary and isinstance(text, str):
             self.summary[kind] = text
             self.summary_en[kind] = str(record.get("text_en", "English summary not provided"))

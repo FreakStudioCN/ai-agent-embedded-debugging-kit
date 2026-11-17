@@ -10,6 +10,7 @@ Thumbs.db
 *.log
 *.pid
 .runtime/
+/VID_*.mp4
 /robot_arm_driver/
 /robot_arm_driver-*.zip
 /camera_checks/

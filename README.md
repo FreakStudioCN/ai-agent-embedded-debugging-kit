@@ -2,9 +2,22 @@
 
 仓库统一维护 MicroPython UART 驱动、真实摄像头、HTML 三维仿真和 Codex 操作 skill。工作方式为观察、提出假设、执行小动作、等待停稳、再次观察并记录结论。
 
+## 选择视觉工作流
+
+| 工作流 | 源码与说明 | 入口 | 主要输出 |
+| --- | --- | --- | --- |
+| CV 识别与 JSONL 实验 | [cv_pipeline/](cv_pipeline/README.md) | `python -m cv_pipeline.tools.evaluate_contour_axis --quick` | 当前帧检测、质量、有效性、版本化 JSONL、叠加录像与实验报告 |
+| 画面观察与人工/Codex 判断 | [visual_observation/](visual_observation/README.md) | `python -m visual_observation` 或 `start_visual_observation.cmd` | 摄像头画面、观察摘要、串口动作事件与回放 |
+
+CV 工作流收纳轮廓主轴、旧 fused_pose 适配、LK 等视觉实现，以及 Phase 0–3、Phase R 和恢复入口。画面观察入口默认显示原始画面，观察与决策由操作者或 Codex 完成。两者共用相机服务、串口驱动、录像工具和 `experiment_safety.py` 安全层。
+
+根目录同名 Python 文件与 `tools/` 中的旧 CV 脚本提供兼容转发，实际维护位置在上述目录。旧 `exploration_monitor.py` 与 `start_monitor.cmd` 保留原有骨架叠加默认行为，纯画面入口使用 `python -m visual_observation`。
+
 ## 给 Codex 的入口
 
 实时观看探索请运行 `python exploration_monitor.py` 或双击 `start_monitor.cmd`。这是独立 Tk 窗口，直接订阅现有 MJPEG 流并读取真实事件日志。按用户确认默认旋转180°，提供双语摘要、动作状态、时间线和事件回放。使用方法见 [监控说明](docs/monitor.md)。
+
+双绿臂表演与观察臂多机位采集使用 `embodied_demo.py`。本机接线、准备态、复现命令、实测误差和三路录像见 [实机演示记录](docs/embodied-demo.md)。
 
 打开本仓库后读取 [AGENTS.md](AGENTS.md) 与 [robot-arm-control skill](.agents/skills/robot-arm-control/SKILL.md)。可以直接给出“观察周围”“小步验证 X/Y/Z 方向”“对照实物调试夹爪”等目标。用户明确授权自主探索后，Codex 可以根据实时画面选择动作和观察顺序。
 
@@ -18,6 +31,10 @@
 | `code/pc_control.py` | PCUART 与单条命令 CLI |
 | `code/pc_session.py` | 持续串口会话、取图、等待与 JSONL 日志 |
 | `code/main.py` | ESP32 示例，显式调用 main() 会使能并回零 |
+| `cv_pipeline/` | CV 识别、JSONL 测量、实验阶段、恢复及离线验证 |
+| `visual_observation/` | 画面观察监控窗口与入口 |
+| `experiment_safety.py` | 共用安全门禁与硬件限位 |
+| `experiment_recorder.py` | 共用多视角录像与导出 |
 | `camera_server.py` | FFmpeg 共享采集与 MJPEG/单帧接口 |
 | `simulator/index.html` | 整机运动学、轨迹与摄像头调试界面 |
 | `simulator/gripper.html` | 夹爪局部结构与开合调试 |

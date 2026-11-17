@@ -11,6 +11,14 @@ from monitor_core import EventTail, MonitorState, jpeg_frames
 
 
 class MonitorTests(unittest.TestCase):
+    def test_new_experiment_clears_old_decision_summaries(self):
+        state = MonitorState()
+        state.apply({'event': 'interpretation', 'text': 'previous experiment', 'text_en': 'previous experiment'})
+        state.apply({'event': 'experiment_started'})
+        self.assertNotIn('previous experiment', state.summary['interpretation'])
+        state.apply({'event': 'observation', 'text': 'current frame', 'text_en': 'current frame'})
+        self.assertEqual(state.summary['observation'], 'current frame')
+
     def test_ack_is_separate_from_visual_completion(self):
         state = MonitorState()
         state.apply({"event": "sending", "command": "G1X5Y179F5"})

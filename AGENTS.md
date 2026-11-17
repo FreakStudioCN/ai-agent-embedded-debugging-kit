@@ -3,6 +3,7 @@
 本仓库将 MicroPython UART 驱动、实机摄像头、HTML 仿真和 Codex 操作技能放在同一版本历史中。
 
 - 实机操作、查看周围、夹爪调试和运动仿真先读取 `.agents/skills/robot-arm-control/SKILL.md`。
+- CV 识别、JSONL 测量与实验恢复源码位于 `cv_pipeline/`，原始画面观察入口位于 `visual_observation/`。新增导入使用包路径，根目录同名模块与 `tools/` 旧入口为兼容转发。相机、驱动、`experiment_safety.py` 和录像工具共用。
 - 驱动实现位于 `code/robot_arm.py`，PC 适配位于 `code/pc_control.py`，长连接入口为 `code/pc_session.py`。根目录同名脚本保留旧入口。`package.json` 保持 MicroPython 单文件安装。
 - 根目录 `robot_arm.py` 与 `example.py` 保留可独立复制到 MicroPython 的分发副本。修改 `code/` 对应源码后运行 `python tools/sync_driver.py`，测试会核对副本一致性。
 - `simulator/index.html`、`simulator/gripper.html` 是 Codex 与用户共用的调试界面。结合其输入、参数与状态，以及摄像头和串口记录判断实机行为。
