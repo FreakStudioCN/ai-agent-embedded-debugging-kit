@@ -49,20 +49,29 @@ python -B -u code/pc_session.py --port COM25 --camera http://127.0.0.1:8768 --ti
 
 先确认机械臂已停在标定观察位 `X0 Y164 Z120`。按 MttoRobot 的说明加载转向预设，确认双足机器人已初始化并空闲。首次进入 Wi-Fi 调试模式时，可先发送 `home`，等 `GET /status` 返回 `initialized=true` 和 `state=idle`。转向预设重启后需重新加载。 [MttoRobot Wi-Fi 调参说明](https://github.com/FreakStudioCN/MttoRobot/blob/main/docs/WIFI_DEBUG.md#恢复联动录制的转向参数)
 
-启动具身探索监控台并保持窗口可见、处于实时模式。相机按实拍安装方向旋转 180°。 [监控台说明](monitor.md)
+在机械臂仓库根目录操作。电脑需要带 Tk 的 Python、开头列出的 Python 依赖，以及 PATH 中可调用的 FFmpeg 和 FFprobe。若 USB 相机服务未运行，先打开一个 PowerShell 窗口启动服务。将 `2M` 替换为本机摄像头名。已有 8768 端口的同一相机服务时直接复用。
 
 ```powershell
-python exploration_monitor.py --camera http://127.0.0.1:8768 --rotation 180
+python -B camera_server.py --port 8768 --device '2M' --width 1280 --fps 10 --reconnect
 ```
 
-在另一个终端启动串口会话。将 `$robotUrl` 和 `$robotConfig` 设为实际的 Wi-Fi 调试地址和本机配置文件路径。工位画面改变时，用同一标定机位核实过的原始 JPEG 作为 `--scan-reference`。
+在另一个窗口启动具身探索监控台并保持窗口可见、处于实时模式。相机按实拍安装方向旋转 180°。 [监控台说明](monitor.md)
 
 ```powershell
-python -B -u code/pc_session.py --port COM25 --camera http://127.0.0.1:8768 --timeout 12000 `
+python exploration_monitor.py --camera http://127.0.0.1:8768 --rotation 180 --no-skeleton
+```
+
+在新的 PowerShell 窗口启动串口会话。三个变量须按本机替换。示例配置路径假设两个仓库在同一父目录。两台设备的串口用途不同，此处填写观察机械臂的串口号。
+
+```powershell
+$armPort = 'COM25'
+$robotUrl = 'http://192.168.137.123:8080'
+$robotConfig = (Resolve-Path '../MttoRobot/firmware/wifi_debug.json').Path
+python -B -u code/pc_session.py --port $armPort --camera http://127.0.0.1:8768 --timeout 12000 `
     --scan-biped $robotUrl --scan-biped-config $robotConfig
 ```
 
-在会话中输入 `:dynamic` 或 `双设备动态演示`。
+首次运行或工位画面改变时，先确认标定机位停稳。在串口会话用 `:snapshot` 获取原始 JPEG，将它复制为 `.runtime/quick-scan-desk-reference.jpg`，或用 `--scan-reference` 指向核实过的原图。随后在会话中输入 `:dynamic` 或 `双设备动态演示`。
 
 入口先将机械臂准备到左侧起拍位。USB 原画与具身探索监控台录屏收到新帧后，第一段运动即为镜头横扫与双足左转，随后在镜头回正时同步右转。接下来在低位拍交替摆臂、后退及双臂抬放，再拍前后机位变化和近景摆臂。两设备只在已验证的前两段转场同时运动。
 
