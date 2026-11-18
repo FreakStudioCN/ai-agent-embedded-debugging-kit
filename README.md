@@ -98,7 +98,7 @@ G4 S0
 
 桌面观察可以在同一个串口会话中输入「快速扫一圈」或 `:scan`，自动沿标定路线移动、取图并保存逐方向报告。 [快速扫视](docs/quick-scan.md)
 
-输入 `:dynamic` 或「双设备动态演示」可以录制机械臂与 MttoRobot 的联动，同时保存 USB 原画和具身探索监控台录屏。 [双设备动态演示](docs/quick-scan.md#双设备动态演示)
+双设备录制前先加载 MttoRobot 的转向预设，再在串口会话输入 `:dynamic`。完整启动命令、观察位和动作参数见 [双设备动态演示](docs/quick-scan.md#双设备动态演示)。
 
 ## MicroPython 安装
 
