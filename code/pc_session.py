@@ -45,9 +45,15 @@ def main():
     parser.add_argument("--timeout", type=int, default=120000, help="UART acknowledgement timeout in ms")
     parser.add_argument("--camera", default="http://127.0.0.1:8766")
     parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parents[1] / ".runtime")
+    parser.add_argument("--scan-profile", choices=("demo", "desk", "cruise"), default="demo")
+    parser.add_argument("--scan-reference", type=Path, help="Raw calibrated front JPEG for the selected scan route")
+    parser.add_argument("--scan-biped", help="Optional MttoRobot Wi-Fi debug URL for the demo")
+    parser.add_argument("--scan-biped-config", type=Path, help="Local MttoRobot Wi-Fi debug JSON")
     args = parser.parse_args()
     if args.timeout <= 0:
         parser.error("timeout must be positive")
+    if bool(args.scan_biped) != bool(args.scan_biped_config) or (args.scan_biped and args.scan_profile != "demo"):
+        parser.error("Provide both biped options with the demo profile")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     session_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     log_path = args.output_dir / ("session-" + session_id + ".jsonl")
@@ -93,6 +99,27 @@ def main():
                         seconds = duration(line.split(maxsplit=1)[1])
                         time.sleep(seconds)
                         emit("waited", seconds=seconds, physical_completion="unverified")
+                    elif line in (":scan", "快速扫一圈"):
+                        from quick_scan import ScanError, run
+
+                        try:
+                            report, path = run(arm, args.camera, args.output_dir, args.scan_profile, args.scan_reference,
+                                               args.scan_biped, args.scan_biped_config)
+                        except ScanError as exc:
+                            emit("error", error=str(exc), pending=arm.pending)
+                        else:
+                            emit("scan_complete", report=str(path), **report)
+                    elif line in (":dynamic", "双设备动态演示"):
+                        from dynamic_demo import run
+                        from quick_scan import ScanError
+
+                        try:
+                            path = run(arm, args.camera, args.output_dir, args.scan_reference,
+                                       args.scan_biped, args.scan_biped_config)
+                        except ScanError as exc:
+                            emit("error", error=str(exc), pending=arm.pending)
+                        else:
+                            emit("dynamic_complete", report=str(path))
                     elif line == ":snapshot":
                         with urlopen(args.camera.rstrip("/") + "/snapshot.jpg", timeout=8) as response:
                             frame_id = response.headers.get("X-Frame-Id")
@@ -103,7 +130,7 @@ def main():
                         path.write_bytes(data)
                         emit("snapshot", path=str(path.resolve()), frame_id=frame_id)
                     elif line.startswith(":"):
-                        raise ValueError("Actions: :status, :snapshot, :wait SECONDS, :await, :quit")
+                        raise ValueError("Actions: :status, :snapshot, :scan, :dynamic, :wait SECONDS, :await, :quit")
                     else:
                         command, settle = request(line)
                         response = arm.command(command)

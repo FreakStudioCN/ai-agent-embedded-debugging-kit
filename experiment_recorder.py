@@ -69,21 +69,23 @@ def capture(args):
             break
         context.extend(more)
     (folder / "context.jsonl").write_text("".join(json.dumps(e, ensure_ascii=False) + "\n" for e in context), encoding="utf-8")
+    usb_only = getattr(args, "usb_only", False)
     manifest = {"schema": "robot-experiment/v1", "started_utc": utc(),
                 "clock": "Host UTC packet receipt timestamps in Matroska PTS",
                 "sync_limits": "Software receipt timing. USB exposure and network latency are uncalibrated. External files require a measured offset.",
                 "rotation": args.rotation, "sources": {}, "state": "recording",
-                "external_pending": not bool(args.external), "pid": __import__("os").getpid()}
+                "external_pending": not usb_only and not bool(args.external), "pid": __import__("os").getpid()}
     session_start = datetime.fromisoformat(manifest["started_utc"]).timestamp()
     jobs = []
     reconnect = ["-reconnect", "1", "-reconnect_streamed", "1", "-reconnect_at_eof", "1",
                  "-reconnect_on_http_error", "4xx,5xx", "-reconnect_delay_max", "10",
                  "-reconnect_max_retries", "20", "-reconnect_delay_total_max", "60"]
-    specs = [("vision", ["-f", "mpjpeg", *reconnect, "-use_wallclock_as_timestamps", "1", "-i", args.camera.rstrip("/") + "/stream.mjpg"], ["-c:v", "copy"]),
-             ("monitor", ["-f", "gdigrab", "-framerate", str(args.fps), "-draw_mouse", "0",
+    specs = [("vision", ["-f", "mpjpeg", *reconnect, "-use_wallclock_as_timestamps", "1", "-i", args.camera.rstrip("/") + "/stream.mjpg"], ["-c:v", "copy"])]
+    if not usb_only:
+        specs.append(("monitor", ["-f", "gdigrab", "-framerate", str(args.fps), "-draw_mouse", "0",
                           "-use_wallclock_as_timestamps", "1", "-i", "title=" + args.window],
               ["-c:v", "libx264", "-preset", "ultrafast", "-crf", "23", "-threads", "2", "-pix_fmt", "yuv420p",
-               "-vf", "pad=ceil(iw/2)*2:ceil(ih/2)*2"]) ]
+               "-vf", "pad=ceil(iw/2)*2:ceil(ih/2)*2"]))
     if args.external:
         if args.external.startswith("dshow:"):
             source = ["-f", "dshow", "-use_wallclock_as_timestamps", "1", "-i", "video=" + args.external[6:]]
@@ -95,7 +97,8 @@ def capture(args):
     try:
         for name, inputs, encoder in specs:
             output = folder / (name + ".mkv")
-            command = ["ffmpeg", "-hide_banner", "-loglevel", "warning", "-y", "-thread_queue_size", "128",
+            progress = ["-stats_period", "0.25", "-progress", str(folder / (name + "-progress.txt"))]
+            command = ["ffmpeg", "-hide_banner", "-loglevel", "warning", "-y", *progress, "-thread_queue_size", "128",
                        *inputs, "-map", "0:v:0", "-an", "-copyts", "-fps_mode", "passthrough",
                        *encoder, "-avoid_negative_ts", "disabled", str(output)]
             log = (folder / (name + "-ffmpeg.log")).open("wb")
@@ -157,6 +160,24 @@ def capture(args):
         manifest["event_reader_errors"] = tail.errors
         manifest["state"] = "failed" if manifest.get("error") or any(s.get("error") or s["returncode"] for s in manifest["sources"].values()) else "complete"
         save_json(folder / "manifest.json", manifest)
+
+
+def export_usb(args):
+    """Export the camera's complete, upright video at the original timing."""
+    folder = args.folder.resolve()
+    manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+    if manifest["state"] != "complete":
+        raise ValueError("USB recording is incomplete; see manifest.json")
+    source = folder / manifest["sources"]["vision"]["file"]
+    output = folder / "quick-scan.mp4"
+    filters = "hflip,vflip," if manifest["rotation"] == 180 else ""
+    subprocess.run([
+        "ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(source), "-map", "0:v:0",
+        "-an", "-vf", filters + "setpts=PTS-STARTPTS", "-fps_mode", "vfr",
+        "-c:v", "libx264", "-preset", "fast", "-crf", "19", "-pix_fmt", "yuv420p",
+        "-movflags", "+faststart", str(output),
+    ], check=True)
+    print(str(output), flush=True)
 
 
 def ass_time(seconds):
@@ -305,6 +326,8 @@ def verify(args):
     files.extend(folder.glob("*-two.mp4"))
     files.extend(folder.glob("*-three.mp4"))
     files.extend(folder.glob("story-90-*.mp4"))
+    files.extend(folder.glob("quick-scan.mp4"))
+    files.extend(folder.glob("dynamic-*.mp4"))
     files.extend(folder / item["file"] for item in manifest.get("imports", {}).values())
     results = []
     for path in files:
@@ -416,6 +439,7 @@ def main():
     record.add_argument("--fps", type=int, default=10)
     record.add_argument("--rotation", type=int, choices=[0, 180], default=180)
     record.add_argument("--external", help="Live URL or dshow:DEVICE; omit for later external file import")
+    record.add_argument("--usb-only", action="store_true", help="Record the USB camera stream without window capture")
     record.add_argument("--seconds", type=float, default=0, help="0 records until STOP file or Ctrl+C")
     record.set_defaults(run=capture)
     export = commands.add_parser("export")
@@ -426,6 +450,9 @@ def main():
     export.add_argument("--start", type=float, default=0)
     export.add_argument("--duration", type=float)
     export.set_defaults(run=compose)
+    usb = commands.add_parser("export-usb", help="Export the upright USB camera video at its original timing")
+    usb.add_argument("folder", type=Path)
+    usb.set_defaults(run=export_usb)
     ingest = commands.add_parser("import-external", help="Preserve an external original with a measured synchronization offset")
     ingest.add_argument("folder", type=Path)
     ingest.add_argument("file", type=Path)
@@ -453,6 +480,8 @@ def main():
         parser.error("duration must be positive")
     if args.action == "export" and args.external and args.external_offset is None:
         parser.error("--external requires a measured --external-offset")
+    if args.action == "record" and args.usb_only and args.external:
+        parser.error("--usb-only cannot record an external camera")
     if args.action in ("export", "edit") and args.layout == "both":
         for layout in ("landscape", "portrait"):
             args.layout = layout

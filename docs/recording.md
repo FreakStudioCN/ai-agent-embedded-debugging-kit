@@ -58,6 +58,8 @@ python experiment_recorder.py verify .runtime/recordings/my-session
 
 录像开始后，Agent 继续通过 `code/exploration_events.py` 发布当时的真实 observation、interpretation、next_action、result。长连接入口自动写入 sending 和 acknowledged。Agent 等待并比较新鲜画面后，写入包含准确指令和证据帧的 motion_verified。事件轮询与窗口录制在独立进程中运行。
 
+快速扫视演示复用单路 USB 录像模式。可独立使用 `record --usb-only` 采集原片，再用 `export-usb <录像目录>` 导出正向 MP4。 [快速扫视](quick-scan.md)
+
 本程序保留当前控制器的运动限制和原有安全流程。结束录像不会发送机械臂运动指令。视频及现场日志留在忽略目录 `.runtime/`。
 
 ## 90秒故事剪辑
