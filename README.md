@@ -27,4 +27,4 @@ mpremote connect YOUR_PORT resume fs cp linear_stage_inputs.py :linear_stage_inp
 
 ## 维护
 
-本仓库为唯一维护源。套装仓库中的驱动是固定版本分发副本，由其tools/sync_linear_stage.py同步并记录来源提交与SHA256；不依赖本机相对导入，克隆套装后仍可单独运行。robot_arm单文件分发和导入保持原状。源文件沿用原MIT许可；不得把实际传感器未接入写成已验收。
+本仓库为唯一维护源。套装仓库以Git子模块drivers/micropython/linear_stage固定本库提交；使用git clone --recurse-submodules或git submodule update --init --recursive取得源码，不依赖同级本机目录。驱动在本库维护，先提交并推送，再更新套装子模块指针。套装tools/sync_linear_stage.py只同步板级配置/示例/传感器说明并记录版本及散列，不再复制驱动实现。robot_arm单文件分发和导入保持原状。源文件沿用原MIT许可；不得把实际传感器未接入写成已验收。
