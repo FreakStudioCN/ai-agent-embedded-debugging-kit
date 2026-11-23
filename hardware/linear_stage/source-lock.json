@@ -1,0 +1,34 @@
+{
+  "source_repository": "https://github.com/FreakStudioCN/micropython-linear-stage.git",
+  "source_commit": "8b184a4fad574216a6d241fc5f244add9a92ec39",
+  "submodule_path": "drivers/micropython/linear_stage",
+  "hash_normalization": "LF text bytes from pinned Git blobs",
+  "files": [
+    {
+      "source": "tb6600.py",
+      "target": "drivers/micropython/linear_stage/tb6600.py",
+      "sha256": "9c1b67f1ea6f40d008d48cb55d4d99a0dc3bc11f4c99fc0b15b363c508463ddf"
+    },
+    {
+      "source": "linear_stage_inputs.py",
+      "target": "drivers/micropython/linear_stage/linear_stage_inputs.py",
+      "sha256": "cc7bfbdd2a28b1c9e224c31651291cd0b4ac43d2dc2d37c9da50c01e81c566c9"
+    },
+    {
+      "source": "firmware/linear_stage/bringup.py",
+      "target": "firmware/linear_stage/bringup.py",
+      "sha256": "3ab63a6a1e244c674db1480340687e4b1bef17c54cad16db8af6a70bed4d21d2"
+    },
+    {
+      "source": "examples/exercise.py",
+      "target": "examples/linear_stage/exercise.py",
+      "sha256": "eaa006d9f51149ef39b3fa20a27302c3cf6d0baab645fe1737d7ca1efe5a99a3"
+    },
+    {
+      "source": "docs/inputs.md",
+      "target": "hardware/linear_stage/sensor-inputs.md",
+      "sha256": "ee7f022ecb0c1c83a80bc9c9f90b683db00eef142f9428a9dcc1488c04e9ee5a"
+    }
+  ],
+  "note": "Driver sources live only in the pinned submodule; kit board/example/docs assets are synchronized."
+}

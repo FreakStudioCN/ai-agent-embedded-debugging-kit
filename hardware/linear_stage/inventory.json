@@ -1,0 +1,115 @@
+{
+  "stage_model": null,
+  "motor_model": null,
+  "driver_model": "TB6600 module; exact vendor/revision unknown",
+  "controller_model": "Seeed XIAO ESP32S3 series",
+  "connection": "D0/GPIO1 -> ENA+; D1/GPIO2 -> DIR+; D2/GPIO3 -> PUL+; all signal negatives -> GND (user confirmed)",
+  "protocol_reference": "local MicroPython API: drivers/micropython/linear_stage/tb6600.py",
+  "wiring_reference": "hardware/linear_stage/README.md",
+  "transmission": null,
+  "positive_direction_definition": null,
+  "limit_switches": null,
+  "encoder": null,
+  "controller_topology": "XIAO + standalone TB6600 for this validation",
+  "calibration": {
+    "full_steps_per_motor_rev": null,
+    "microsteps": 16,
+    "motor_revs_per_output_rev": null,
+    "mm_per_output_rev": null,
+    "direction": null,
+    "minimum_mm": null,
+    "maximum_mm": null
+  },
+  "driver_switch_settings": {
+    "pulses_per_motor_rev": 3200,
+    "rated_current_a": 1.0,
+    "peak_current_a": 1.2,
+    "source": "user confirmation, not measured"
+  },
+  "signal_voltage": "3.3V compatible, user confirmed",
+  "enable_signal": {
+    "enable_level": 0,
+    "release_level": 1,
+    "source": "user confirmed optocoupler ON releases, OFF enables; common cathode wiring"
+  },
+  "firmware": {
+    "version": "1.29.0",
+    "build": "ESP32_GENERIC_S3-SPIRAM_OCT",
+    "flashed_date": "2026-11-23",
+    "repl_port_observed": "COM21",
+    "serial": "E806909E85200000",
+    "rmt_module_available": true,
+    "motion_verified": false
+  },
+  "latest_device_test": {
+    "port": "COM21",
+    "driver_version": "0.3.2",
+    "submitted_pulses_total": 12800,
+    "directions": [
+      0,
+      1
+    ],
+    "pulses_per_direction": 6400,
+    "rmt_completion_reported": 12800,
+    "elapsed_ms_per_direction": [
+      2184,
+      2184
+    ],
+    "ena_readback": 0,
+    "physical_displacement_verified": false,
+    "physical_return_verified": false,
+    "waveform_measured": false,
+    "user_observation": null,
+    "requested_frequency_hz": 3200,
+    "stop_state_verified": false,
+    "stop_note": "3200Hz batch-stop tested offline only; no mid-motion stop in physical run"
+  },
+  "authorized_test_range": {
+    "pulses_each_direction": 6400,
+    "source": "user explicitly confirmed safe",
+    "calibrated_mm": null
+  },
+  "previous_100hz_user_observation": "可以，但是震动有点大",
+  "reserved_inputs": {
+    "source": "user-supplied model and wiring; not physical input validation",
+    "switches": {
+      "model": "SN04-P",
+      "quantity": 3,
+      "roles": [
+        "center",
+        "minimum",
+        "maximum"
+      ],
+      "wiring": {
+        "BN_brown": "10-30V",
+        "BU_blue": "0V",
+        "BK_black": "PNP NO"
+      },
+      "gpio": null,
+      "conditioned_active_levels": null,
+      "conditioning_circuit": null
+    },
+    "encoder": {
+      "model": "HN3806-AB-600F",
+      "vendor": "锐乐尔电气",
+      "lines_per_rev": 600,
+      "channels": [
+        "A",
+        "B"
+      ],
+      "output_type": "PNP/push-pull per user; exact circuit not independently verified",
+      "wiring": {
+        "red": "DC 5-24V",
+        "black": "0V",
+        "white": "OUTA",
+        "green": "OUTB"
+      },
+      "gpio": null,
+      "conditioning_circuit": null,
+      "decoder": null,
+      "decoding_multiplier": null,
+      "counts_per_rev": null,
+      "stage_mm_per_encoder_rev": null
+    }
+  }
+}

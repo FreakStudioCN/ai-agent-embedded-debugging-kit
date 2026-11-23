@@ -11,3 +11,5 @@
 - 按当前会话授权自主推进。用户要求自由观察或移动时，可以选择运动目标、范围和观察顺序，无需逐段重复确认。
 - 修改代码后运行 `python -B -m unittest discover -s tests -v`、`node simulator/check_math.mjs`、`node simulator/check_gripper.mjs`。文档修改核对路径与示例。
 - 运行照片与日志放 `.runtime/`。实拍资料和本机 CAD 依赖留在忽略目录。模型来源与许可证见 `simulator/README.md` 及上游目录。
+
+- 线轨驱动为drivers/micropython/linear_stage Git子模块；先git submodule update --init --recursive。独立库先提交推送，套装固定其commit；tools/sync_linear_stage.py仅同步板级配置/示例/说明，不维护驱动副本。旧驱动路径为PC兼容转发，板端部署复制子模块中的原文件。
