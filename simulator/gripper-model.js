@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { STLLoader } from './vendor/STLLoader.js';
 import { gripperMetrics, gripperPartPose } from './gripper-kinematics.mjs';
 
-export async function loadGripperModel(baseUrl = './models/custom_gripper/') {
+export async function loadGripperModel(baseUrl = './../mechanical/photo_reconstruction/') {
   const response = await fetch(baseUrl + 'model.json');
   if (!response.ok) throw new Error('无法读取夹爪模型清单');
   const model = await response.json();

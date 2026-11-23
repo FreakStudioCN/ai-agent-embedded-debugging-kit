@@ -27,7 +27,7 @@ basis = json.loads(re.sub(r",\s*\]", "]", basis))
 mount = np.eye(4)
 mount[:3, :3] = np.array(basis).T
 mount[:3, 3] = [offset[0], 0, offset[1]]
-wrist = trimesh.load_mesh(ROOT / "models/upstream/CAD Files/robot_belt_arm manipulator.stl")
+wrist = trimesh.load_mesh(ROOT / "../mechanical/upstream/community_robot_arm/CAD Files/robot_belt_arm manipulator.stl")
 wrist.apply_translation([-119.5386, 49, -196.3517])
 assert wrist.is_volume, "Wrist STL must be a closed positive-volume mesh"
 geometries = {key: trimesh.load_mesh(MODEL / path) for key, path in manifest["geometry"].items()}

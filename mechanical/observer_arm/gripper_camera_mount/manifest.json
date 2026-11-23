@@ -1,0 +1,321 @@
+{
+  "package_version": "2026-11-20",
+  "baseline": "User-selected 机械臂夹爪及相机支架 (2).zip",
+  "source": "CAD package and current 3MF provided by user; received 2026-11-20",
+  "files": [
+    {
+      "name": "机械臂夹爪及相机支架 (2).zip",
+      "bytes": 4212889,
+      "sha256": "2e096e4a3a0ab177e9e76aabcabfc4b45f8fd716b7c55e0945fabcb273e31657",
+      "role": "Editable CAD parts/assemblies and STEP exports; 24 files total"
+    },
+    {
+      "name": "观察机械臂夹爪固定摄像头.3mf",
+      "bytes": 185442,
+      "sha256": "dbd21252006c6e3fd665784221bcf53f89966c205299c44227c7b9f53348875e",
+      "role": "User-confirmed currently used print 3MF"
+    }
+  ],
+  "cad_contents": [
+    {
+      "path": "机械臂夹爪及相机支架/GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.SLDPRT",
+      "bytes": 247192,
+      "sha256": "065dafd9ddf3af85dbda79801cc5b07d3b595e2ccd5b4e79a139968ca2bfd45b",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.STEP",
+      "bytes": 140383,
+      "sha256": "40b46ac58d3af99fa7f933177545ccdae16d5d4a7a41c256a4524816906dd4d9",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/GB - Spur gear 1M 20T 左.SLDPRT",
+      "bytes": 303628,
+      "sha256": "de4147b83f41ef934c1ea41300b72eb7500f5dc7b38135bc87ab5b62e790073a",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/GB - Spur gear 1M 20T 左.STEP",
+      "bytes": 159550,
+      "sha256": "c2ec0d0f93dd9afa0dc08b0ffe90754d016d3585c65d591d26d38633b2efb6a1",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT",
+      "bytes": 332351,
+      "sha256": "90076f68f214a8664378677c598a18dc55c529a6fcbe8b4f0d860e8ea3d3540d",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/SG90 - Micro Servo 9g - Tower Pro.5_BS EN ISO 7045 - M2 x 8 - Z - 8S.SLDPRT",
+      "bytes": 42440,
+      "sha256": "261cfc4841cb937393a8303558fb697ba529e5271272cb06d03189a3bd7c0ee6",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT",
+      "bytes": 43328,
+      "sha256": "c9ecb541e305a12d5b5aa6c3e1beff20a30a793063c8530467c9b9d4120ec3ed",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/SG90 - Micro Servo 9g - Tower Pro.SLDASM",
+      "bytes": 533357,
+      "sha256": "d35fcf114b9b3aa53f13d1dc8fc5ebb857cbf9f6a6492a4deb7afbf40afb6e14",
+      "extension": ".sldasm"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/六角螺母 M2.SLDPRT",
+      "bytes": 105242,
+      "sha256": "7c827e0fb6a4e73c5e1ddabd5e4cd631af92a7b704b145ff6dbc4da5932a6909",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/内六角平圆头螺钉 M2x16.SLDPRT",
+      "bytes": 165760,
+      "sha256": "558ea6bf612be3604e19624e6311514c991fb52a76354f89043399afeea31cc1",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/内六角平圆头螺钉 M2x8.SLDPRT",
+      "bytes": 165760,
+      "sha256": "558ea6bf612be3604e19624e6311514c991fb52a76354f89043399afeea31cc1",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/十字槽盘头螺钉 M2x16.SLDPRT",
+      "bytes": 97595,
+      "sha256": "61690ff08e2e6d460d22fd9b619fb5985d8f99ed4672a1f097c604230e264d86",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/右夹爪.SLDPRT",
+      "bytes": 144545,
+      "sha256": "4d8f537d3794bc758f4fe24a1a1275513c9e9d21b186a8c71ff8ac0f0deb64c0",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/右夹爪.STEP",
+      "bytes": 129480,
+      "sha256": "2747d5502cb7c369248e2bae4d5407e58ba0fb5b4aad2aaadc7e00741ae101b1",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/支架.SLDPRT",
+      "bytes": 146133,
+      "sha256": "be2be11fb5b591ad83413abae1c6b280b000b86c9c90bacce28fcd75af511ea6",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/支架.STEP",
+      "bytes": 113615,
+      "sha256": "9b7cb2cb0edb36951a0b69f1f06a0d84a7ae28c3a796e22bbc7ef1d52085a592",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/板.SLDPRT",
+      "bytes": 200920,
+      "sha256": "e8c231d73ffba0077b83492f0ab491f9853ffc5f52c4957062d43ef650afa82a",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/板.STEP",
+      "bytes": 138664,
+      "sha256": "9f078a4f9a505a046dc2350af2ecd954f1f671cbac2349288530df0150590644",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/装配体1.SLDASM",
+      "bytes": 712853,
+      "sha256": "0d4c07283f80a41807d26e9df074483f22be0e3177bd5cc585f085e0b6f0bbc0",
+      "extension": ".sldasm"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/装配体1.STEP",
+      "bytes": 3617987,
+      "sha256": "86e7c25c54a7ed36d31249b48f3d4bfed592c4a7222a7adad6601eb257c9c5b6",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/连杆.SLDPRT",
+      "bytes": 99901,
+      "sha256": "5196090334f8920a1c3060393f3b7dec648fba89ebe09bf4fe277d907964430b",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/连杆.STEP",
+      "bytes": 30772,
+      "sha256": "eac5d812f35a570a68f02e75926e8a9dba658e6ba5e75fc170a273fbe4debe7c",
+      "extension": ".step"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/镜向右夹爪.SLDPRT",
+      "bytes": 176735,
+      "sha256": "4c8250ca8e0f086d39b253ac27c4f0b0376863cba18b52b08af158cc17adff0a",
+      "extension": ".sldprt"
+    },
+    {
+      "path": "机械臂夹爪及相机支架/镜向右夹爪.STEP",
+      "bytes": 206161,
+      "sha256": "fba879380853feeb7c6e626b8ad4072dd5ed65e8cb8dadba9e49dcafcf9e2af1",
+      "extension": ".step"
+    }
+  ],
+  "print_validation": {
+    "zip_crc": "passed",
+    "model_xml_count": 8,
+    "model_xml_parse": "passed",
+    "cad_geometry_equivalence": "not performed",
+    "cad_model_relationship": "User-confirmed correspondence to valid print models in selected archive"
+  },
+  "repository_destination": "mechanical/observer_arm/gripper_camera_mount/revisions/2026-11-19-received/; source and step from selected archive, 3MF under print/",
+  "repository_status": "Archived in repository on 2026-11-23 following approved v1.8 organization",
+  "native_reference_check": {
+    "result": "passed",
+    "checked_date": "2026-11-20",
+    "native_files_opened": 16,
+    "missing_dependencies": 0,
+    "toolbox_default_search_disabled_for_check": true,
+    "toolbox_setting_restored": true,
+    "original_files_unchanged": true,
+    "report": "native-reference-check.json"
+  },
+  "verification_report": {
+    "name": "native-reference-check.json",
+    "sha256": "cdd694a4cc46181d4931fc43ccb1c9a6bea3b65133119eddd5e5777caca0ffdc"
+  },
+  "repository_url": "https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit",
+  "archived_files": [
+    {
+      "path": "revisions/2026-11-19-received/print/观察机械臂夹爪固定摄像头.3mf",
+      "bytes": 185442,
+      "sha256": "dbd21252006c6e3fd665784221bcf53f89966c205299c44227c7b9f53348875e"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.SLDPRT",
+      "bytes": 247192,
+      "sha256": "065dafd9ddf3af85dbda79801cc5b07d3b595e2ccd5b4e79a139968ca2bfd45b"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/GB - Spur gear 1M 20T 左.SLDPRT",
+      "bytes": 303628,
+      "sha256": "de4147b83f41ef934c1ea41300b72eb7500f5dc7b38135bc87ab5b62e790073a"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT",
+      "bytes": 332351,
+      "sha256": "90076f68f214a8664378677c598a18dc55c529a6fcbe8b4f0d860e8ea3d3540d"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/SG90 - Micro Servo 9g - Tower Pro.5_BS EN ISO 7045 - M2 x 8 - Z - 8S.SLDPRT",
+      "bytes": 42440,
+      "sha256": "261cfc4841cb937393a8303558fb697ba529e5271272cb06d03189a3bd7c0ee6"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT",
+      "bytes": 43328,
+      "sha256": "c9ecb541e305a12d5b5aa6c3e1beff20a30a793063c8530467c9b9d4120ec3ed"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/SG90 - Micro Servo 9g - Tower Pro.SLDASM",
+      "bytes": 533357,
+      "sha256": "d35fcf114b9b3aa53f13d1dc8fc5ebb857cbf9f6a6492a4deb7afbf40afb6e14"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/六角螺母 M2.SLDPRT",
+      "bytes": 105242,
+      "sha256": "7c827e0fb6a4e73c5e1ddabd5e4cd631af92a7b704b145ff6dbc4da5932a6909"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/内六角平圆头螺钉 M2x16.SLDPRT",
+      "bytes": 165760,
+      "sha256": "558ea6bf612be3604e19624e6311514c991fb52a76354f89043399afeea31cc1"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/内六角平圆头螺钉 M2x8.SLDPRT",
+      "bytes": 165760,
+      "sha256": "558ea6bf612be3604e19624e6311514c991fb52a76354f89043399afeea31cc1"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/十字槽盘头螺钉 M2x16.SLDPRT",
+      "bytes": 97595,
+      "sha256": "61690ff08e2e6d460d22fd9b619fb5985d8f99ed4672a1f097c604230e264d86"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/右夹爪.SLDPRT",
+      "bytes": 144545,
+      "sha256": "4d8f537d3794bc758f4fe24a1a1275513c9e9d21b186a8c71ff8ac0f0deb64c0"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/支架.SLDPRT",
+      "bytes": 146133,
+      "sha256": "be2be11fb5b591ad83413abae1c6b280b000b86c9c90bacce28fcd75af511ea6"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/板.SLDPRT",
+      "bytes": 200920,
+      "sha256": "e8c231d73ffba0077b83492f0ab491f9853ffc5f52c4957062d43ef650afa82a"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/装配体1.SLDASM",
+      "bytes": 712853,
+      "sha256": "0d4c07283f80a41807d26e9df074483f22be0e3177bd5cc585f085e0b6f0bbc0"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/连杆.SLDPRT",
+      "bytes": 99901,
+      "sha256": "5196090334f8920a1c3060393f3b7dec648fba89ebe09bf4fe277d907964430b"
+    },
+    {
+      "path": "revisions/2026-11-19-received/source/镜向右夹爪.SLDPRT",
+      "bytes": 176735,
+      "sha256": "4c8250ca8e0f086d39b253ac27c4f0b0376863cba18b52b08af158cc17adff0a"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/assembly.step",
+      "bytes": 3617987,
+      "sha256": "86e7c25c54a7ed36d31249b48f3d4bfed592c4a7222a7adad6601eb257c9c5b6"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.STEP",
+      "bytes": 140383,
+      "sha256": "40b46ac58d3af99fa7f933177545ccdae16d5d4a7a41c256a4524816906dd4d9"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/GB - Spur gear 1M 20T 左.STEP",
+      "bytes": 159550,
+      "sha256": "c2ec0d0f93dd9afa0dc08b0ffe90754d016d3585c65d591d26d38633b2efb6a1"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/右夹爪.STEP",
+      "bytes": 129480,
+      "sha256": "2747d5502cb7c369248e2bae4d5407e58ba0fb5b4aad2aaadc7e00741ae101b1"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/支架.STEP",
+      "bytes": 113615,
+      "sha256": "9b7cb2cb0edb36951a0b69f1f06a0d84a7ae28c3a796e22bbc7ef1d52085a592"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/板.STEP",
+      "bytes": 138664,
+      "sha256": "9f078a4f9a505a046dc2350af2ecd954f1f671cbac2349288530df0150590644"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/装配体1.STEP",
+      "bytes": 3617987,
+      "sha256": "86e7c25c54a7ed36d31249b48f3d4bfed592c4a7222a7adad6601eb257c9c5b6"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/连杆.STEP",
+      "bytes": 30772,
+      "sha256": "eac5d812f35a570a68f02e75926e8a9dba658e6ba5e75fc170a273fbe4debe7c"
+    },
+    {
+      "path": "revisions/2026-11-19-received/step/镜向右夹爪.STEP",
+      "bytes": 206161,
+      "sha256": "fba879380853feeb7c6e626b8ad4072dd5ed65e8cb8dadba9e49dcafcf9e2af1"
+    }
+  ]
+}

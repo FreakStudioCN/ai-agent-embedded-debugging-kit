@@ -5,7 +5,7 @@ import { DEFAULT_CONFIG, forward, homePoint } from './kinematics.mjs';
 import { gripperMetrics, gripperPartPose, GRIPPER_MOUNT_BASIS } from './gripper-kinematics.mjs';
 import { compileProgram } from './program.mjs';
 
-const model = JSON.parse(await readFile(new URL('./models/custom_gripper/model.json', import.meta.url), 'utf8'));
+const model = JSON.parse(await readFile(new URL('./../mechanical/photo_reconstruction/model.json', import.meta.url), 'utf8'));
 const p = model.parameters;
 const servo = model.parts.find(part => part.name === 'servo_case');
 assert.equal(servo.motion, 'fixed');

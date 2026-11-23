@@ -1,0 +1,10 @@
+﻿类别,引用位置,当前引用,建议更新,兼容核对/状态
+仓库及远端,GitHub仓库设置；本地origin,原URL和.git远端,同一仓库更名并更新origin，不重建仓库或丢失历史,审批后核对管理员权限/名称占用；当前未更名
+包分发,package.json；tools/sync_driver.py；tests/test_distribution.py；docs/driver.md；README,0.1.0；相对code/robot_arm.py；from robot_arm import RobotArm,更名后文档使用新仓库mip地址；安装模块名及单文件边界不变,先单独更名且保持路径；迁移源码后保留code/robot_arm.py为可独立安装的同步副本，不能换成依赖PC包的转发器；检查旧/新mip及raw下载
+Skill,.agents/skills/robot-arm-control/SKILL.md；agents/openai.yaml,robot-arm-control；当前code/和根服务命令,保留Skill名称与$robot-arm-control显式调用，描述其是套装中机械臂操作Skill,更新整体工程名、路径和链接；尚未实现模块不写成Skill可执行能力
+AGENTS与本地路径,AGENTS.md；仓库根定位和.runtime,当前工作目录ROBOT；相对文件定位,更新整套工程定位，保留组件规则；无需同步改本地文件夹名,检查ROOT/parents[n]；不以仓库slug作为Python包名，不改串口/相机服务端口
+脚本/导入,code/*.py；根兼容入口；start_*.cmd；simulator/serve.py,robot_arm、cv_pipeline、visual_observation等包名与旧CLI,仓库改名不改Python导入；目录迁移按已审方案保留转发,核对子进程、mock.patch、mip分发副本；更名和源路径迁移分别验证
+模型清单,simulator/models/manifest.json；model-manifest.json；模型说明,上游20sffactory来源、固定提交及本库资料位置,仅更新本库当前入口及归档指向，保留原来源URL/许可证/哈希,不把上游、历史来源URL盲目替换成本库新名；原始模型不重写
+示例,examples规划入口；docs/quick-scan.md；docs/embodied-demo.md；docs/mtto-robot-progress.md,当前运行命令及历史PoC链接,正式组件导航覆盖整套工程；双绿臂和桌面搭子继续历史PoC,当前可用命令与拟实施命令分别标注；历史外部仓库保留来源
+云文档,当前整理方案；总任务；试装资料；已发回复/附件索引,本库旧URL及旧工程标题,当前方案更新整套定位；确认更名后同步相关文档中的现行仓库链接,历史正式版本与固定提交证据保留，不改成虚假的历史新地址
+其他分发/集成,已跟踪文件范围的.github、Pages和外部调用方,本次git ls-files未发现.github工作流；外部依赖须实施前再查,如有Pages、被其他工作流uses引用的Action，单独核对,GitHub普通网页与Git重定向不保证Pages或Action兼容；不复用旧仓库名以免破坏重定向

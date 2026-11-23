@@ -9,3 +9,12 @@ simulator/vendor/** -text -diff
 *.step binary
 *.stp binary
 *.docx binary
+
+# Relocated mechanical payloads keep source hashes on Windows.
+mechanical/** -text -diff
+mechanical/**/*.py text eol=lf diff
+mechanical/**/*.md text eol=lf diff
+mechanical/upstream/community_robot_arm/** -text -diff
+*.SLDPRT binary
+*.SLDASM binary
+*.3mf binary

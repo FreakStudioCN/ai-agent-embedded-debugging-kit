@@ -23,6 +23,22 @@ class Handler(SimpleHTTPRequestHandler):
                       ".mjs": "text/javascript", ".js": "text/javascript",
                       ".stl": "application/octet-stream", ".step": "application/step"}
 
+    def translate_path(self, path):
+        import urllib.parse
+        route = urllib.parse.unquote(urlsplit(path).path)
+        repo = Path(__file__).resolve().parents[1]
+        if route == "/models/gripper_camera_mount/assembly.step":
+            return str(repo / "mechanical/observer_arm/gripper_camera_mount/revisions/2026-11-19-received/step/assembly.step")
+        aliases = {"/models/custom_gripper/": "photo_reconstruction", "/models/upstream/": "upstream/community_robot_arm", "/models/gripper_camera_mount/": "observer_arm/gripper_camera_mount", "/mechanical/": ""}
+        for prefix, subdir in aliases.items():
+            if route.startswith(prefix):
+                allowed = (repo / "mechanical" / subdir).resolve()
+                target = (allowed / route[len(prefix):]).resolve()
+                if target.is_relative_to(allowed) and target.is_file(): return str(target)
+                return str(repo / "simulator" / "__not_found__")
+        if route == "/models/manifest.json": return str(repo / "mechanical/upstream/community_robot_arm/manifest.json")
+        return super().translate_path(path)
+
     def do_GET(self):
         try:
             if urlsplit(self.path).path == "/api/camera-status":

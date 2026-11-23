@@ -8,7 +8,7 @@ import { GRIPPER_MOUNT_BASIS } from './gripper-kinematics.mjs';
 
 const $ = id => document.getElementById(id);
 const DEG = Math.PI / 180;
-const CAD_PATH = './models/upstream/CAD Files/';
+const CAD_PATH = './../mechanical/upstream/community_robot_arm/CAD Files/';
 const GRIPPER_DURATION = .65; // Full-stroke preview duration, independent of servo calibration.
 const A = new THREE.Vector3(100, -49, 62.5);
 const B = new THREE.Vector3(11.6879, -49, 143.7420);

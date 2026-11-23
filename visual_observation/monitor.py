@@ -372,7 +372,7 @@ class Monitor:
         self.last_sequence = -1
 
 
-def main(argv=None, *, default_skeleton=True):
+def main(argv=None, *, default_skeleton=False):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--camera", default="http://127.0.0.1:8766")
     parser.add_argument("--events", type=Path, default=Path(__file__).resolve().parents[1] / ".runtime")

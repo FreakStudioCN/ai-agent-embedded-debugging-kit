@@ -1,123 +1,99 @@
-# RobotArm 驱动与 Codex 观察调试环境
+# AI Agent Embedded Device Debugging Kit
 
-仓库统一维护 MicroPython UART 驱动、真实摄像头、HTML 三维仿真和 Codex 操作 skill。工作方式为观察、提出假设、执行小动作、等待停稳、再次观察并记录结论。
+面向 Codex 等 AI Agent 的桌面嵌入式设备自动化调试套装。工程统一组织视觉观察、机械操作、录像、测量及设备接口；**当前可用的是观察机械臂/USB相机 PoC 和离线工具，完整套装尚未交付**。
 
-## 选择视觉工作流
+仓库由 `micropython-robot-arm` 更名，保留全部 Git 历史。现行地址：https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit 。已有克隆更新远端：
 
-| 工作流 | 源码与说明 | 入口 | 主要输出 |
-| --- | --- | --- | --- |
-| CV 识别与 JSONL 实验 | [cv_pipeline/](cv_pipeline/README.md) | `python -m cv_pipeline.tools.evaluate_contour_axis --quick` | 当前帧检测、质量、有效性、版本化 JSONL、叠加录像与实验报告 |
-| 画面观察与人工/Codex 判断 | [visual_observation/](visual_observation/README.md) | `python -m visual_observation` 或 `start_visual_observation.cmd` | 摄像头画面、观察摘要、串口动作事件与回放 |
-
-CV 工作流收纳轮廓主轴、旧 fused_pose 适配、LK 等视觉实现，以及 Phase 0–3、Phase R 和恢复入口。画面观察入口默认显示原始画面，观察与决策由操作者或 Codex 完成。两者共用相机服务、串口驱动、录像工具和 `experiment_safety.py` 安全层。
-
-根目录同名 Python 文件与 `tools/` 中的旧 CV 脚本提供兼容转发，实际维护位置在上述目录。旧 `exploration_monitor.py` 与 `start_monitor.cmd` 保留原有骨架叠加默认行为，纯画面入口使用 `python -m visual_observation`。
-
-## 给 Codex 的入口
-
-实时观看探索请运行 `python exploration_monitor.py` 或双击 `start_monitor.cmd`。这是独立 Tk 窗口，直接订阅现有 MJPEG 流并读取真实事件日志。按用户确认默认旋转180°，提供双语摘要、动作状态、时间线和事件回放。使用方法见 [监控说明](docs/monitor.md)。
-
-双绿臂表演与观察臂多机位采集使用 `embodied_demo.py`。本机接线、准备态、复现命令、实测误差和三路录像见 [实机演示记录](docs/embodied-demo.md)。
-
-打开本仓库后读取 [AGENTS.md](AGENTS.md) 与 [robot-arm-control skill](.agents/skills/robot-arm-control/SKILL.md)。可以直接给出“观察周围”“小步验证 X/Y/Z 方向”“对照实物调试夹爪”等目标。用户明确授权自主探索后，Codex 可以根据实时画面选择动作和观察顺序。
-
-首次实体探索需一次确认无人进入活动范围、明确的小步安全路径和操作者可直接切断执行器电源。此后根据画面持续推进。历史测试目标和仿真参考范围需要结合当前现场使用。
-
-## 目录
-
-| 路径 | 用途 |
-| --- | --- |
-| `code/robot_arm.py` | MicroPython 单文件 UART 驱动 |
-| `code/pc_control.py` | PCUART 与单条命令 CLI |
-| `code/pc_session.py` | 持续串口会话、取图、等待与 JSONL 日志 |
-| `code/main.py` | ESP32 示例，显式调用 main() 会使能并回零 |
-| `cv_pipeline/` | CV 识别、JSONL 测量、实验阶段、恢复及离线验证 |
-| `visual_observation/` | 画面观察监控窗口与入口 |
-| `experiment_safety.py` | 共用安全门禁与硬件限位 |
-| `experiment_recorder.py` | 共用多视角录像与导出 |
-| `camera_server.py` | FFmpeg 共享采集与 MJPEG/单帧接口 |
-| `simulator/index.html` | 整机运动学、轨迹与摄像头调试界面 |
-| `simulator/gripper.html` | 夹爪局部结构与开合调试 |
-| `.agents/skills/robot-arm-control/` | Codex 自主观察与操作指导 |
-| `docs/driver.md` | 驱动 API、接线、安装及错误处理 |
-| `simulator/models/custom_gripper/` | 夹爪模型、参数化建模源码及尺寸假设 |
-| `.runtime/` | 本机运行日志与照片，Git 忽略 |
-
-根目录 `robot_arm.py`、`example.py` 保留可独立复制到 MicroPython 的分发副本。源码维护在 `code/`，修改后运行 `python tools/sync_driver.py` 同步，测试会核对一致性。根目录 `pc_control.py` 加载 `code/` 实现。原 `robot_arm_driver/` 内容保留为本机旧副本并被 Git 忽略，Git 历史及 origin 已迁入当前根目录。
-
-## 启动调试环境
-
-安装 Python、pyserial，摄像头另需 PATH 中有 FFmpeg。仿真检查需要 Node.js。
-
-```powershell
-python -m pip install -r requirements-pc.txt
-python -B camera_server.py
+```sh
+git remote set-url origin https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit.git
 ```
 
-在其他终端启动仿真与交互串口。
+## 当前能用什么
 
-```powershell
+|组件/能力|状态|入口|
+|---|---|---|
+|观察机械臂、夹爪|现有UART驱动、PC长连接、扫视及仿真；ok不是实测停稳|[驱动](drivers/micropython/robot_arm.py)、[会话](host_control/session.py)、[说明](docs/components/observer_arm.md)|
+|USB相机、录像与观察窗口|共享JPEG/MJPEG采集、Tk监控及FFmpeg录像；已安装实际摄像头；双目/精确标定未验证|[camera](camera/server.py)、[录像](recording/recorder.py)、[监控](docs/setup/monitor.md)|
+|线轨/滑台及综合控制器|规划；四轴步进+夹爪PWM、编码器、限位和保护并非现有UART库已实现|[线轨](docs/components/linear_stage.md)、[控制器](docs/components/stepper_servo_controller.md)|
+|WS2812灯光|规划：补光、颜色/亮度及供电保护|[说明](docs/components/lighting.md)|
+|电源/功耗|规划：USB/电池测量及被测设备断电重启|[说明](docs/components/power_meter.md)|
+|USB音频|规划：成熟USB麦克风/扬声器直接连接PC|[说明](docs/components/audio.md)|
+|MLX90640热成像|规划：温度矩阵、MicroPython接口及PC热图|[说明](docs/components/thermal.md)|
+|Agent操作Skill|现有机械臂Skill；其他组件不冒称可用|[robot-arm-control](.agents/skills/robot-arm-control/SKILL.md)、[AGENTS](AGENTS.md)|
+|绿色机械臂、桌面搭子|历史PoC，可选外部设备/仓库，不是主线安装前提|[历史示例](examples/historical_poc/README.md)|
+
+## 最短安装和使用
+
+PC需要Python；相机采集和录像需要FFmpeg，仿真需要Node.js进行检查。先枚举实际设备，不沿用历史COM端口。以下启动命令不发送运动指令。
+
+```sh
+git clone https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit.git
+cd ai-agent-embedded-debugging-kit
+python -m pip install -r requirements-pc.txt -r requirements-monitor.txt
+python -m camera.server --device "2M"
+```
+
+第二个终端启动纯观察窗口（不需历史双绿臂依赖）：
+
+```sh
+python -m visual_observation
+```
+
+相机页面 http://127.0.0.1:8766/ ，快照 `/snapshot.jpg`。仿真与PC串口连接分别启动：
+
+```sh
 python -B simulator/serve.py
-python -u code/pc_session.py --port COM23
+python -m host_control.session --port COM25
 ```
 
-相机默认设备 `2M`、1280×720、10 FPS，可用 `--device`、`--width`、`--fps` 调整。已有采集服务时复用它。
+仿真页面 http://127.0.0.1:8767/ 。COM25只是示例，先确认实际设备。会话内 `G4 S0` 检查通信，`:snapshot` 取图，`:quit` 关闭连接并保留电机状态。使能、回零、移动和夹爪操作依据当前任务授权、现场状态及[Skill](.agents/skills/robot-arm-control/SKILL.md)执行。控制器回复与物理完成分开记录。
 
-- 摄像头页面为 http://127.0.0.1:8766/ 。
-- 单帧接口为 http://127.0.0.1:8766/snapshot.jpg 。
-- 状态接口为 http://127.0.0.1:8766/api/status 。
-- 整机仿真为 http://127.0.0.1:8767/ ，夹爪页为 http://127.0.0.1:8767/gripper.html 。
+## 两条Agent观察路径
 
-HTML 中的动作控制用于仿真，实物通过串口会话操作。界面、skill 和 UART 日志构成同一调试环境。
+- **结构化数据**：相机 → 通用算法/设备适配 → JSONL → Agent。先安装 `requirements-vision.txt`；[通用轴线拟合库](perception/README.md)与[历史实验](examples/historical_poc/README.md)分别维护。`python -m observation.structured PATH/pose_stream.jsonl` 可读取已有结果，不调用模型API或设备控制。
+- **直接多模态看图**：`python -m observation.multimodal --output .runtime/frame.jpg` 获取真实JPEG及元数据；Agent宿主打开/附加图片后分析。路径字符串不能代替图像输入，无需加载整套CV算法。元数据时间是PC接收时间，不冒称曝光时间。
 
-## 交互串口
+两条路径通过帧/证据标识关联。完整流式契约、更多算法提取和统一设备SDK仍按后续实际交付推进，详见[观察接口](observation/README.md)。
 
-串口参数为115200/8N1。当前设备曾使用 COM23，运行前核对实际端口。程序启动只打开连接，在同一终端逐行输入。
+## MicroPython单文件安装
 
-```text
-G4 S0
-:status
-:snapshot
-:scan
-:wait 5
-:await
-:quit
+保留 `robot_arm` 导入名和0.1.0清单，只安装驱动，不安装PC工具。
+
+```python
+import mip
+mip.install("github:FreakStudioCN/ai-agent-embedded-debugging-kit")
+from robot_arm import RobotArm
 ```
 
-`G4 S0` 检查通信，`:snapshot` 保存新图并返回绝对路径，`:await` 继续等候超时指令的原回复。`:quit` 释放串口，保持电机状态。可以输入单行 G/M 指令，或将指令与等待组合。
+也可将根 `robot_arm.py` 复制到板端根目录或 `/lib/robot_arm.py`。维护源在 `drivers/micropython/robot_arm.py`；根文件及旧 `code/robot_arm.py` 是同步生成的独立副本。运行 `python tools/sync_driver.py` 同步。ESP32示例在[examples/micropython/main.py](examples/micropython/main.py)，仅导入不运动，显式调用main会使能并回零，须先修改现场接线。
 
-```json
-{"command":"G1 X5 F5","settle":5}
-```
+## 内容放在哪里
 
-这个目标只是语法示例。实体动作按当前授权与实际路径选择。`M17` 使能电机，`G28` 回零；回零路径明确安全后再执行。`M3` 闭合、`M5` 打开夹爪。XYZ 为毫米，F 为毫米每秒且最小5，I/J 为即时角度目标。详细 IO/12V 等接口见驱动文档。
+|目录|内容|
+|---|---|
+|[hardware](hardware/README.md)、[firmware](firmware/README.md)|硬件范围、交付状态及设备端工程边界；未收到工程不建空板卡目录|
+|drivers/micropython、host_control|驱动维护源、PC串口/事件/扫视|
+|camera、recording、visual_observation、safety|共享采集、录像、显示与现有实验门禁|
+|perception、observation|设备无关算法、结构化/直接图片交付|
+|[mechanical](mechanical/README.md)|自研原生CAD/STEP/实际打印3MF、照片重建及原开源模型|
+|examples|MicroPython示例和历史PoC，设备参数与实验编排不放通用算法库|
+|docs/components、setup、experiments、archive|组件导航、安装使用、实验说明、历史记录|
+|simulator、tests、tools、.agents/skills|仿真、检查、分发同步及Agent操作Skill|
+|.runtime（忽略）|本机配置、日志、照片/视频及临时依赖；不提交凭据与原始录像|
 
-2026-11-16 实测曾在收到 `ok` 后观察到继续移动。回复、等待时间与视觉停稳分别记录。程序输出 `physical_completion=unverified`，实际完成需结合新鲜画面确认。当前资料没有位置反馈与已确认的硬件急停指令，目标坐标只能作为指令记录。
+## 模型、证据及兼容
 
-同一端口保持一个调用者，每次一条运动指令。超时保留 pending 状态，查看画面并等待原回复。120秒 UART 超时用于停止等待回复并阻止后续发送，无法停止已在执行的物理动作。
+- [当前试装模型](mechanical/observer_arm/gripper_camera_mount/README.md)：选定(2)包的14个SLDPRT、2个SLDASM、8个STEP以及实际打印3MF；[原生引用检查](mechanical/observer_arm/gripper_camera_mount/native-reference-check.json)。加载通过不等于实物尺寸、完整运动范围或第二套安装验收。
+- [原开源机械臂](mechanical/upstream/community_robot_arm/PROVENANCE.md)：69文件固定提交、许可与散列保留；[照片重建模型](mechanical/photo_reconstruction/README.md)继续标记估算来源。
+- [批准的整理方案](https://f1829ryac0m.feishu.cn/docx/Drwld0cIyoAFFuxuriXcLO6knMf)、[总任务](https://f1829ryac0m.feishu.cn/docx/Jwo1dIiAGoc7iUxGVMMcQfZrnGm)、[PoC视频](https://f1829ryac0m.feishu.cn/wiki/IWVXw7ahpiAuyckT0Qccio5ynNc)。
+- 原根脚本、code/与cv_pipeline旧入口继续兼容；维护实现已迁移，避免复制两套业务逻辑。旧相机、串口和仿真命令保持可调用。更名及下载核验见[实际核验记录](docs/reorganization-verification.md)。
 
-桌面观察可以在同一个串口会话中输入「快速扫一圈」或 `:scan`，自动沿标定路线移动、取图并保存逐方向报告。 [快速扫视](docs/quick-scan.md)
+## 回归检查
 
-双设备录制前先加载 MttoRobot 的转向预设，再在串口会话输入 `:dynamic`。完整启动命令、观察位和动作参数见 [双设备动态演示](docs/quick-scan.md#双设备动态演示)。
-
-## MicroPython 安装
-
-将 `code/robot_arm.py` 复制到开发板根目录或 `/lib/robot_arm.py`，使用 `from robot_arm import RobotArm`。`package.json` 保持0.1.0驱动包路径，仅安装该模块。接线、电平注意事项与 API 见 [驱动文档](docs/driver.md)。
-
-## 验证
-
-图像局部位移分析可用 `python -m pip install -r requirements-vision.txt` 安装可选依赖，再运行 `python tools/compare_frames.py BEFORE.jpg AFTER.jpg --region X0 Y0 X1 Y1`。固定背景的像素变化辅助观察记录，物理到位仍需结合现场判断。
-
-```powershell
+```sh
 python -B -m unittest discover -s tests -v
 node simulator/check_math.mjs
 node simulator/check_gripper.mjs
 ```
 
-安装 `trimesh` 与 `manifold3d` 后，可运行 `python -B simulator/check_mount.py` 核对夹爪与腕部交集。参数化 CAD 重建需要 `cadquery-ocp-novtk`，生成命令及模型假设见 [夹爪建模说明](simulator/models/custom_gripper/README.md)。
-
-## 模型与资料
-
-模型来源、固定提交、校验值与第三方许可见 [仿真说明](simulator/README.md)。上游 CAD 和图形采用 CC BY 4.0，上游参考固件采用 GPL-3.0，Three.js 采用 MIT，各自许可文件随资源保留。根目录 MIT 适用于本项目原创代码，第三方材料遵循其各自许可。
-
-本地实拍照片、建模委托资料、运行录像、临时依赖和旧 ZIP 通过 `.gitignore` 排除。相机十字形两组相对孔中心距17 mm由用户提供，其余照片估算尺寸待复核。
+These checks are offline and do not constitute a new physical motion/accuracy test. 模型及第三方代码按各自来源许可证；本库MIT许可不覆盖第三方许可边界。

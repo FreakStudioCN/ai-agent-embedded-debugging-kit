@@ -1,9 +1,3 @@
-# 夹爪及相机支架装配
+# Moved
 
-[下载 STEP 装配](assembly.step)
-
-`assembly.step` 为用户于2026-11-19提供的更新版夹爪及相机支架装配，原文件名为“装配体1.STEP”。文件按原始字节纳入仓库，采用STEP AP214，文件头记录由SolidWorks 2020导出。本次版本替换2026-11-18入库版本，旧版可通过Git历史查看。
-
-本目录保存该次交付的独立CAD装配。现有浏览器仿真继续使用 `../custom_gripper/` 中的照片重建模型，尚未接入本装配的零件及运动关系。
-
-文件大小为3617987字节，SHA256为 `86e7c25c54a7ed36d31249b48f3d4bfed592c4a7222a7adad6601eb257c9c5b6`。
+See [README.md](../../../mechanical/observer_arm/gripper_camera_mount/README.md).

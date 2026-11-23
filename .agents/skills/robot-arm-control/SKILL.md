@@ -9,26 +9,26 @@ description: 在本仓库使用长连接串口、实时摄像头与HTML仿真控
 
 ## 统一环境
 
-以包含 `code/robot_arm.py`、`camera_server.py`、`simulator/index.html` 的仓库根目录为工作目录。路径随克隆位置变化。当前机器曾使用 COM23、115200/8N1、USB-SERIAL CH340，相机 DirectShow 名称为 `2M`。连接前枚举实际设备，旧端口和上次位置只提供线索。
+以包含 `drivers/micropython/robot_arm.py`、`camera/server.py`、`simulator/index.html` 的仓库根目录为工作目录。路径随克隆位置变化。当前机器曾使用 COM23、115200/8N1、USB-SERIAL CH340，相机 DirectShow 名称为 `2M`。连接前枚举实际设备，旧端口和上次位置只提供线索。
 
-- `code/robot_arm.py` 是 MicroPython 驱动，`code/pc_control.py` 提供 PCUART。
-- `code/pc_session.py` 保持一个串口连接，接受逐行命令并记录回复与照片。
-- `camera_server.py` 共享同一相机采集，默认服务为 `http://127.0.0.1:8766`。
+- `drivers/micropython/robot_arm.py` 是 MicroPython 驱动，`host_control/pc_uart.py` 提供 PCUART。
+- `host_control/session.py` 保持一个串口连接，接受逐行命令并记录回复与照片。
+- `camera/server.py` 共享同一相机采集，默认服务为 `http://127.0.0.1:8766`。
 - `simulator/index.html` 是整机仿真，`simulator/gripper.html` 是夹爪局部模型，默认服务为 `http://127.0.0.1:8767`。
 - HTML 的目标、程序和模型参数用于规划与对照，真实运动通过串口会话执行。默认仿真参考姿态为 X0 Y174 Z120，实际限位搜索、碰撞和失步需要实物核对。
 
-安装 PC 依赖使用 `python -m pip install -r requirements-pc.txt`。先检查已有服务并复用在线摄像头；同一相机保持单个采集进程。需要启动时运行 `python -B camera_server.py`、`python -B simulator/serve.py`。Windows 后台启动采用隐藏窗口并记录 PID。相机需要 FFmpeg，仿真使用仓库内 Three.js 和模型。设备、端口与几何参数可按现场调整。
+安装 PC 依赖使用 `python -m pip install -r requirements-pc.txt`。先检查已有服务并复用在线摄像头；同一相机保持单个采集进程。需要启动时运行 `python -m camera.server`、`python -B simulator/serve.py`。Windows 后台启动采用隐藏窗口并记录 PID。相机需要 FFmpeg，仿真使用仓库内 Three.js 和模型。设备、端口与几何参数可按现场调整。
 
 ## 长连接入口
 
-用户希望实时观看时，运行 `python exploration_monitor.py --rotation 180`，或复用已打开的独立监控窗口。默认180°已经过用户方向图确认。窗口通过 MJPEG 和 JSONL 订阅工作，操作说明见仓库 `docs/monitor.md`。
+用户希望实时观看时，运行 `python exploration_monitor.py --rotation 180`，或复用已打开的独立监控窗口。默认180°已经过用户方向图确认。窗口通过 MJPEG 和 JSONL 订阅工作，操作说明见仓库 `docs/setup/monitor.md`。
 
-每轮真实观察、判断、下一步和结果都使用 `code/exploration_events.py` 写入中英双语公开摘要，分别选择 observation、interpretation、next_action、result。`--text` 和 `--text-en` 表达同一实际内容。发送指令和控制器回复由长连接入口自动记录。确认停稳后发布 motion_verified，附本轮准确 command 与证据 frame。不要生成占位探索叙述。分析完成再逐条发布该轮真实结论。
+每轮真实观察、判断、下一步和结果都使用 `host_control/events.py` 写入中英双语公开摘要，分别选择 observation、interpretation、next_action、result。`--text` 和 `--text-en` 表达同一实际内容。发送指令和控制器回复由长连接入口自动记录。确认停稳后发布 motion_verified，附本轮准确 command 与证据 frame。不要生成占位探索叙述。分析完成再逐条发布该轮真实结论。
 
 使用终端工具的交互 PTY 启动，后续向同一个 session ID 写入。
 
 ```text
-python -u code/pc_session.py --port COM23
+python -u -m host_control.session --port COM23
 ```
 
 连接只打开串口，默认等待2秒让控制器就绪，打开前设 DTR/RTS 为 False。程序使用普通输入循环，避免 Windows Python 3.14 的 `python -i` 在非控制台中进入报错循环。普通管道 stdin 关闭会结束会话，应保持交互终端。
@@ -76,3 +76,9 @@ JSON 可组合一条指令与等待时间。`settle` 单位秒，允许0至60秒
 需要量化图像变化时，可安装 `requirements-vision.txt` 并运行 `python tools/compare_frames.py BEFORE.jpg AFTER.jpg --region X0 Y0 X1 Y1`。选择纹理清楚、人员不遮挡的固定背景区域。它输出局部块匹配的像素偏移与分歧，只作为画面证据。局部背景静止、重复纹理误匹配或独立运动物体均可能影响结论，需要结合连续帧和等待时间判断。
 
 修改驱动保持 MicroPython 兼容和 mip 安装路径有效。修改仿真先运行数学与夹爪检查，再查看浏览器实际加载。实机验证在用户当前授权内执行，如实记录范围。日志与抓帧保存在被忽略的 `.runtime/`。
+
+## 套装定位与观察路径
+
+本Skill负责完整调试套装中的观察机械臂，不把规划的线轨、灯光、功耗、音频或热成像接口写成已实现。当前仓库：https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit 。绿色机械臂和桌面搭子入口仅在examples/historical_poc中按需使用。
+
+结构化路径读取observation.structured输出的既有JSONL；直接看图可运行 `python -m observation.multimodal --camera http://127.0.0.1:8766 --output .runtime/frame.jpg`，随后用图像工具打开真实文件。新字段不冒称完整流式协议已落地；图片时间为PC接收时间。两条观察路径均不直接控制电机，动作仍由host_control会话发送。旧code/与根入口仅兼容，维护时修改新目录。

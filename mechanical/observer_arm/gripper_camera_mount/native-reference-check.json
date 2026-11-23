@@ -1,0 +1,367 @@
+{
+  "checked_date": "2026-11-20",
+  "tool": "SOLIDWORKS 2026 revision 34.0.0",
+  "archive": "机械臂夹爪及相机支架 (2).zip",
+  "archive_sha256": "2e096e4a3a0ab177e9e76aabcabfc4b45f8fd716b7c55e0945fabcb273e31657",
+  "result": "passed: native dependency files present and resolved from the selected package",
+  "scope": {
+    "native_files": 16,
+    "parts": 14,
+    "assemblies": 2,
+    "main_assembly_components_including_nested": 11,
+    "servo_subassembly_components": 2,
+    "missing_dependency_files": 0,
+    "externally_loaded_component_files": 0
+  },
+  "method": [
+    "Extract selected original package into isolated verification directory",
+    "Inspect recursive stored and resolved dependencies of all 16 native files with SOLIDWORKS API",
+    "Disable Toolbox default search temporarily to prevent replacement of packaged gears; restore original setting after verification",
+    "Open all native files read-only, resolve lightweight components and inspect loaded component paths",
+    "Close without saving; verify all 24 extracted files remain byte-identical to the original archive"
+  ],
+  "warnings": {
+    "32": "NeedsRegen: one part indicated a rebuild; no source file was rebuilt and saved",
+    "128": "AlreadyOpen: file was already in the current verification session",
+    "missing_reference_warning": "none"
+  },
+  "toolbox_note": "Default Toolbox search initially substituted local-library spur gear; with swUseFolderAsDefaultSearchLocation=false, both supplied gear files resolved from this package. Preserve this behavior when reproducing the original assembly. Setting restored after check.",
+  "print_model_relationship": "User confirmed current 3MF corresponds to valid print models in selected (2).zip; no further correspondence check is pending",
+  "original_files_unchanged": true,
+  "documents": [
+    {
+      "file": "板.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 32,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [
+        {
+          "reference": "装配体1",
+          "file": "装配体1.SLDASM"
+        }
+      ],
+      "components": []
+    },
+    {
+      "file": "镜向右夹爪.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 128,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [
+        {
+          "reference": "右夹爪",
+          "file": "右夹爪.SLDPRT"
+        },
+        {
+          "reference": "装配体1",
+          "file": "装配体1.SLDASM"
+        }
+      ],
+      "components": []
+    },
+    {
+      "file": "连杆.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 128,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "六角螺母 M2.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "内六角平圆头螺钉 M2x16.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "内六角平圆头螺钉 M2x8.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "十字槽盘头螺钉 M2x16.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "右夹爪.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 128,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "支架.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 128,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "装配体1.SLDASM",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 128,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [
+        {
+          "reference": "板",
+          "file": "板.SLDPRT"
+        },
+        {
+          "reference": "连杆",
+          "file": "连杆.SLDPRT"
+        },
+        {
+          "reference": "右夹爪",
+          "file": "右夹爪.SLDPRT"
+        },
+        {
+          "reference": "支架",
+          "file": "支架.SLDPRT"
+        },
+        {
+          "reference": "镜向右夹爪",
+          "file": "镜向右夹爪.SLDPRT"
+        },
+        {
+          "reference": "SG90 - Micro Servo 9g - Tower Pro",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.SLDASM"
+        },
+        {
+          "reference": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT"
+        },
+        {
+          "reference": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT"
+        },
+        {
+          "reference": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N",
+          "file": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.SLDPRT"
+        },
+        {
+          "reference": "GB - Spur gear 1M 20T 左",
+          "file": "GB - Spur gear 1M 20T 左.SLDPRT"
+        }
+      ],
+      "components": [
+        {
+          "name": "连杆-3",
+          "file": "连杆.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "右夹爪-1",
+          "file": "右夹爪.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "连杆-1",
+          "file": "连杆.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "板-1",
+          "file": "板.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N-1",
+          "file": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.SLDPRT",
+          "configuration": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "GB - Spur gear 1M 20T 左-2",
+          "file": "GB - Spur gear 1M 20T 左.SLDPRT",
+          "configuration": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "支架-1",
+          "file": "支架.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "镜向右夹爪-4",
+          "file": "镜向右夹爪.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "SG90 - Micro Servo 9g - Tower Pro-1",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.SLDASM",
+          "configuration": "Default",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "SG90 - Micro Servo 9g - Tower Pro-1/SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺-1",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "SG90 - Micro Servo 9g - Tower Pro-1/SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S-1",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        }
+      ]
+    },
+    {
+      "file": "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "GB - Spur gear 1M 20T 左.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "GB - Spur gear 1M 20T 20PA 2FW ---S20A75H50L2.0N"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "SG90 - Micro Servo 9g - Tower Pro.5_BS EN ISO 7045 - M2 x 8 - Z - 8S.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "默认"
+      ],
+      "dependencies": [],
+      "components": []
+    },
+    {
+      "file": "SG90 - Micro Servo 9g - Tower Pro.SLDASM",
+      "opened": true,
+      "load_errors": 0,
+      "load_warning": 0,
+      "configurations": [
+        "Default"
+      ],
+      "dependencies": [
+        {
+          "reference": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT"
+        },
+        {
+          "reference": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT"
+        }
+      ],
+      "components": [
+        {
+          "name": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S-1",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.6_BS EN ISO 7045 - M2 x 4 - Z - 4S.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        },
+        {
+          "name": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺-1",
+          "file": "SG90 - Micro Servo 9g - Tower Pro.1_Pe嘺.SLDPRT",
+          "configuration": "默认",
+          "suppression_state": 2,
+          "model_loaded": true
+        }
+      ]
+    }
+  ],
+  "limitations": "Checks file-reference completeness and opening/resolution, not full feature rebuild, dimensional accuracy, strength, or physical-print validation"
+}

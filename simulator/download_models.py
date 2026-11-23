@@ -35,7 +35,7 @@ def main():
 
     def download(path):
         url = "https://raw.githubusercontent.com/%s/%s/%s" % (REPOSITORY, COMMIT, quote(path))
-        target = ROOT / "models" / "upstream" / path
+        target = ROOT.parent / "mechanical" / "upstream" / "community_robot_arm" / path
         data = target.read_bytes() if target.exists() else b""
         def git_hash(content):
             return hashlib.sha1(b"blob " + str(len(content)).encode() + b"\0" + content).hexdigest()
@@ -51,7 +51,7 @@ def main():
         files = list(pool.map(download, paths))
     manifest = {"repository": "https://github.com/" + REPOSITORY, "commit": COMMIT,
                 "cad_license": "CC BY 4.0, per upstream README", "files": files}
-    (ROOT / "models" / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (ROOT.parent / "mechanical" / "upstream" / "community_robot_arm" / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     vendor = {"three.module.js": "build/three.module.js", "OrbitControls.js": "examples/jsm/controls/OrbitControls.js",
               "STLLoader.js": "examples/jsm/loaders/STLLoader.js", "LICENSE": "LICENSE"}
     for name, path in vendor.items():
