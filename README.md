@@ -105,4 +105,4 @@ These checks are offline and do not constitute a new physical motion/accuracy te
 
 线轨驱动以[独立库](https://github.com/FreakStudioCN/micropython-linear-stage)子模块接入 `drivers/micropython/linear_stage/`，固定验证版本；驱动仅在独立库维护，套装保留板级配置、示例及[来源锁](hardware/linear_stage/source-lock.json)。三路SN04-P及一路HN3806-AB-600F仍仅接口预留，见[接入约定](hardware/linear_stage/sensor-inputs.md)。
 
-首次克隆使用 `git clone --recurse-submodules https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit.git`；已有克隆执行 `git submodule update --init --recursive`。两个仓库均需授权访问；普通clone不会自动下载子模块。更新流程见[线轨组件说明](docs/components/linear_stage.md)。
+首次克隆使用 `git clone --recurse-submodules https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit.git`；已有克隆执行 `git submodule update --init --recursive`。两个仓库均需授权访问；普通clone不会自动下载子模块。升级固定版本及使用者拉取步骤见[子模块维护说明](docs/setup/submodules.md)；独立库推送后，还需提交并推送套装中的子模块指针。

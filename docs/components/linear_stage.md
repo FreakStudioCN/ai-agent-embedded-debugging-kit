@@ -52,17 +52,8 @@ ENA极性已由用户确认并固化到板级配置：低电平使能锁轴，�
 
 独立库 https://github.com/FreakStudioCN/micropython-linear-stage 已作为Git子模块接入 `drivers/micropython/linear_stage/`。该子模块是套装内唯一驱动实现，固定提交见[source-lock.json](../../hardware/linear_stage/source-lock.json)；原驱动路径仅保留PC导入兼容转发，不可将转发文件复制到板端。板端直接复制子模块根tb6600.py及按需linear_stage_inputs.py，robot_arm导入名与根分发清单不变。
 
-```sh
-# 已有套装克隆，首次初始化；私有子模块同样需要GitHub访问权限
-git submodule update --init --recursive
-# 在独立库提交并推送后，显式选择已审阅版本，不自动追踪最新main
-git -C drivers/micropython/linear_stage fetch origin
-git -C drivers/micropython/linear_stage checkout <已审阅的commit>
-python -B tools/sync_linear_stage.py
-# 回归通过后，将子模块指针、来源锁及集成资产一起提交
-git add drivers/micropython/linear_stage hardware/linear_stage/source-lock.json firmware/linear_stage/bringup.py examples/linear_stage/exercise.py hardware/linear_stage/sensor-inputs.md
-```
+首次初始化、维护者升级固定提交、使用者拉取更新及远端URL变更的完整操作，见[子模块维护说明](../setup/submodules.md)。独立库更新后，套装需要显式更新子模块commit、运行同步工具、暂存关联资产并通过测试，再提交推送套装；仅独立库push不会自动改变套装版本。通常不修改.gitmodules中的URL。
 
-继续使用同级独立库作为开发目录时，先在那边提交并推送，再在套装子模块fetch/checkout该提交。不要在两处维护驱动副本。tools/sync_linear_stage.py只从已初始化、干净的子模块同步板级配置/示例/传感器说明并登记散列，不再复制驱动源码。套装固定版本不因独立库main更新自动改变。
+tools/sync_linear_stage.py只从已初始化、干净的子模块同步板级配置/示例/传感器说明并登记散列，不再复制驱动源码。现有PC兼容入口与robot_arm分发保持不变。
 
 已预留3个SN04-P逻辑输入（center/minimum/maximum）及HN3806-AB-600F 600线AB编码器的外部计数器接口；未配置返回未知，转换后极性/解码倍率显式指定。新接口只读，不自动回零、运动联锁或闭环。电平转换、GPIO及解码器尚未确定，不连接工业输出到3.3V GPIO。见[传感器接入约定](../../hardware/linear_stage/sensor-inputs.md)。
