@@ -15,7 +15,7 @@
 
 [inventory.json](inventory.json) 用 null 记录未知值，不含默认引脚、端口或虚构校准值。所有字段填写后仍须人工核实原始证据；工具不验证接线、不授权运动。明确无编码器/限位时应写明“无”及依据，而非保留未知。当前不连接设备、不下发任何命令。
 
-来源：[总任务](https://f1829ryac0m.feishu.cn/docx/Jwo1dIiAGoc7iUxGVMMcQfZrnGm) 第2.1、2.3、4.2–4.3节；[组织范围](https://f1829ryac0m.feishu.cn/docx/Drwld0cIyoAFFuxuriXcLO6knMf) 组件规划与未完成项。均于本日通过已登录lark-cli只读获取，规划不作为到货证据。
+来源：总任务（内部来源，链接不公开） 第2.1、2.3、4.2–4.3节；组织范围（内部来源，链接不公开） 组件规划与未完成项。均于本日通过已登录lark-cli只读获取，规划不作为到货证据。
 
 ## 本轮用户补充（覆盖上表对应未知项）
 
