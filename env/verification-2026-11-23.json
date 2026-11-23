@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-23",
+  "timezone": "Asia/Shanghai",
+  "scope": "Offline software checks only; no hardware acceptance or live movement",
+  "repository_baseline": "6ca7cf5",
+  "conda": "26.1.1",
+  "channels": [
+    "conda-forge"
+  ],
+  "pip_index": "https://pypi.org/simple",
+  "runtime": {
+    "python": "3.12.16",
+    "platform": "win32",
+    "machine": "AMD64",
+    "pip": {
+      "pyserial": "3.5",
+      "Pillow": "13.0.0",
+      "numpy": "2.5.5",
+      "opencv-python-headless": "4.14.0.94"
+    },
+    "tk": "8.6",
+    "isolated_imports_from_environment": true
+  },
+  "conda_packages": [
+    {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "build": "h0ad9c76_10",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "2026.11.20",
+      "build": "h4c7d964_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "libexpat",
+      "version": "2.9.0",
+      "build": "hac47afa_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "libffi",
+      "version": "3.7.0",
+      "build": "h3d046cb_1",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "liblzma",
+      "version": "5.8.3",
+      "build": "hfd05255_1",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "libpython",
+      "version": "3.12.16",
+      "build": "hfb4101e_0_cpython",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "libsqlite",
+      "version": "3.54.1",
+      "build": "hf5d6505_101",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "libzlib",
+      "version": "1.3.2",
+      "build": "hfd05255_3",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "openssl",
+      "version": "3.6.5",
+      "build": "hf411b9b_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "build": "pyhc364b38_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "pip",
+      "version": "26.2.2",
+      "build": "pyh8b19718_2",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "python",
+      "version": "3.12.16",
+      "build": "hb12b558_0_cpython",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "build": "pyhe730653_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "tk",
+      "version": "8.6.13",
+      "build": "h967ab96_4",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026e",
+      "build": "h5d301ff_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "ucrt",
+      "version": "10.0.26100.0",
+      "build": "h57928b3_0",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "vc",
+      "version": "14.5",
+      "build": "hda273ae_44",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "vc14_runtime",
+      "version": "14.51.36247",
+      "build": "hb06f545_44",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "vcomp14",
+      "version": "14.51.36247",
+      "build": "h1c3f1cb_44",
+      "channel": "conda-forge"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0",
+      "build": "pyhd8ed1ab_0",
+      "channel": "conda-forge"
+    }
+  ],
+  "source_review": [
+    {
+      "file": "environment.yml",
+      "sha256": "7f2f8c154b992e3a1d672ca3188bfaacfbe2514216577a5c7556a213206fe3ea"
+    },
+    {
+      "file": "requirements-lock.txt",
+      "sha256": "b9513815313fa127426e1c4b19af8b24841a6d5f82091aea9ad33b8af51c2ee9"
+    }
+  ],
+  "source_changes": [
+    "Removed host-specific environment name and prefix",
+    "Dropped unrelated channels; conda-forge only",
+    "Removed pip freeze packaging file:// build path; Conda tools recorded by Conda",
+    "Four application pip versions match received attachment"
+  ],
+  "checks": {
+    "first_fresh_environment": {
+      "recipe": "environment.yml",
+      "python_unittest": 128,
+      "pip_check": "passed"
+    },
+    "second_fresh_environment": {
+      "recipe": "env/environment-verified-win-64.yml",
+      "python_unittest": 128,
+      "pip_check": "passed",
+      "conda_and_pip_inventory_matches_first": true
+    },
+    "node_kinematics": 639,
+    "node_gripper": "passed",
+    "tk_and_isolated_imports": "passed; no GUI window acceptance",
+    "canonical_cli_help": [
+      "host_control.session",
+      "camera.server",
+      "recording.recorder",
+      "observation.multimodal"
+    ]
+  },
+  "network_retries": [
+    "Initial Conda OpenSSL download timed out; retried successfully",
+    "First rebuild pip download was incomplete; succeeded using a different new environment with PyPI and retries"
+  ],
+  "external_tools": {
+    "node": "v26.4.0",
+    "ffmpeg": "ffmpeg version 2026-04-09-git-d3d0b7a5ee-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 2026-04-09-git-d3d0b7a5ee-essentials_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers",
+    "ffmpeg_check_scope": "version detection only; not live capture or encoding acceptance"
+  },
+  "files_sha256": {
+    "environment.yml": "c70788b4f3ebe98201ae25a51ce680fd9500764f5606e27c01ff7fc99be8e6c2",
+    "requirements-lock.txt": "90e19ccf9440352236b6c30a843de523262ce7ef5e763998e667845818e8fc04",
+    "env/environment-verified-win-64.yml": "ef33f758e7e1e9e43ffb45dd7681b0bc4c4ea32cd77b99ae4cb49dbcf47794d2",
+    "env/conda-explicit-win-64.txt": "915a2bed38beead9716c89c9690c456bfc7573cf94812c9254175e9a45ba5dd1",
+    "docs/setup/conda-environment.md": "f097e0fc6301376b4936934c4ddc66544e64088b92bd6c3f3590d22396115aad"
+  }
+}

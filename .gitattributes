@@ -18,3 +18,9 @@ mechanical/upstream/community_robot_arm/** -text -diff
 *.SLDPRT binary
 *.SLDASM binary
 *.3mf binary
+
+# Keep environment exports and recorded hashes stable across checkouts.
+environment.yml text eol=lf
+requirements-lock.txt text eol=lf
+env/** text eol=lf
+docs/setup/conda-environment.md text eol=lf

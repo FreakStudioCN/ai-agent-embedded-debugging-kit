@@ -24,6 +24,8 @@ git remote set-url origin https://github.com/FreakStudioCN/ai-agent-embedded-deb
 
 ## 最短安装和使用
 
+推荐使用Python 3.12的[Miniconda环境说明](docs/setup/conda-environment.md)，包含[可复建配方](environment.yml)、依赖分层、精确版本记录和全新环境验证。以下pip方式保留为已有环境的快捷入口。
+
 PC需要Python；相机采集和录像需要FFmpeg，仿真需要Node.js进行检查。先枚举实际设备，不沿用历史COM端口。以下启动命令不发送运动指令。
 
 ```sh

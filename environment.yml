@@ -1,0 +1,13 @@
+name: embedded-debugging-kit
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - tk
+  - pip:
+      - pyserial>=3.5,<4
+      - Pillow
+      - numpy
+      - opencv-python-headless>=4.13,<5

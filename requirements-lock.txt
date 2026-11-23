@@ -1,0 +1,5 @@
+# Verified pip application dependencies; Conda runtime is recorded in env/.
+numpy==2.5.5
+opencv-python-headless==4.14.0.94
+pillow==13.0.0
+pyserial==3.5
