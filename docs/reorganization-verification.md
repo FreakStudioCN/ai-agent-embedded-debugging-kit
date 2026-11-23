@@ -17,9 +17,22 @@
 - 老/新串口CLI、相机、录像CLI的--help离线启动检查；未连接实体设备、未执行新运动。
 - 根robot_arm.py与旧code/robot_arm.py均与drivers/micropython/robot_arm.py字节一致；package.json保留0.1.0和相对源路径，只安装robot_arm模块。
 
+- 从新URL独立浅克隆后再次执行：128项Python测试、639项运动学检查及夹爪检查全部通过，证明不依赖原工作区忽略目录。
+
 ## 远端下载核验
 
-首次推送后检查旧/新Git地址、仓库页面、raw package.json及其相对驱动源。结果将随同本次提交后的远端核验补充；不把HTTP下载核验表述为板端固件安装/实机运行测试。
+实现提交：`d671081`（main，已推送），历史祖先`b02d097`保留。
+
+|检查|实际结果|
+|---|---|
+|旧名与新名Git ls-remote/fetch|均解析同一main，origin使用新名；历史未重写|
+|仓库可见性|private，保持不变；匿名页面/raw/mip HEAD清单均404，这是权限边界，不是匿名下载通过|
+|旧名、新名授权GitHub Contents API|package.json与code/robot_arm.py均200|
+|两组API返回的授权raw下载|均200，文件字节与对应Git blob一致；驱动与新维护源Git blob一致|
+|mip清单内容|保留0.1.0、相对源code/robot_arm.py，只分发robot_arm.py；不装PC包|
+|板端mip直接联网安装|未执行；标准匿名GitHub入口不适用于当前私有仓库，README改为授权克隆后mpremote复制独立驱动|
+
+授权下载的临时令牌未写入本仓库或报告；不把授权HTTP下载核验表述为板端固件安装/实机运行测试。新机位、运动精度和第二套实装不由本次离线检查替代。
 
 ## 范围与遗留
 

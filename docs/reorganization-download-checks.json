@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-23",
+  "visibility": "private",
+  "anonymous_http_status": 404,
+  "authorized_downloads": [
+    {
+      "repository": "micropython-robot-arm",
+      "path": "package.json",
+      "api_status": 200,
+      "authorized_raw_status": 200,
+      "sha256": "eab573a602ef710bd9cb6f398cad1e6eff7ab756bf5141ba20db53eda1a26b35"
+    },
+    {
+      "repository": "micropython-robot-arm",
+      "path": "code/robot_arm.py",
+      "api_status": 200,
+      "authorized_raw_status": 200,
+      "sha256": "8ceaac0b29c924ff7f5f4e1974ea495b21ef46033608110a912de01246d7b622"
+    },
+    {
+      "repository": "ai-agent-embedded-debugging-kit",
+      "path": "package.json",
+      "api_status": 200,
+      "authorized_raw_status": 200,
+      "sha256": "eab573a602ef710bd9cb6f398cad1e6eff7ab756bf5141ba20db53eda1a26b35"
+    },
+    {
+      "repository": "ai-agent-embedded-debugging-kit",
+      "path": "code/robot_arm.py",
+      "api_status": 200,
+      "authorized_raw_status": 200,
+      "sha256": "8ceaac0b29c924ff7f5f4e1974ea495b21ef46033608110a912de01246d7b622"
+    }
+  ],
+  "device_install_tested": false
+}

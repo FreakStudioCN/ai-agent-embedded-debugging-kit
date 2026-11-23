@@ -59,11 +59,14 @@ python -m host_control.session --port COM25
 
 保留 `robot_arm` 导入名和0.1.0清单，只安装驱动，不安装PC工具。
 
-```python
-import mip
-mip.install("github:FreakStudioCN/ai-agent-embedded-debugging-kit")
-from robot_arm import RobotArm
+当前仓库为私有仓库，匿名raw下载返回404，标准mip的裸GitHub入口不能保证直接安装；不改变仓库可见性。推荐先用已授权的Git克隆，再复制独立驱动到板端：
+
+```sh
+python -m pip install mpremote
+mpremote connect YOUR_PORT fs cp robot_arm.py :robot_arm.py
 ```
+
+板端仍使用 `from robot_arm import RobotArm`。清单兼容入口为 `github:FreakStudioCN/ai-agent-embedded-debugging-kit`，旧名的清单/驱动授权下载也已列入核验；只有提供兼容的认证下载渠道时才能使用mip直接下载。不要将访问令牌写入README或板端示例。
 
 也可将根 `robot_arm.py` 复制到板端根目录或 `/lib/robot_arm.py`。维护源在 `drivers/micropython/robot_arm.py`；根文件及旧 `code/robot_arm.py` 是同步生成的独立副本。运行 `python tools/sync_driver.py` 同步。ESP32示例在[examples/micropython/main.py](examples/micropython/main.py)，仅导入不运动，显式调用main会使能并回零，须先修改现场接线。
 
