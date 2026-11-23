@@ -1,6 +1,6 @@
 # MicroPython Single-axis Linear Stage
 
-独立维护的单轴TB6600驱动库，XIAO ESP32S3板级适配与工业传感器接口。仅为本地Git仓库，尚未创建远端。运动驱动版本0.3.2，传感器接口版本0.1.0。
+独立维护的单轴TB6600驱动库，XIAO ESP32S3板级适配与工业传感器接口。组织仓库：[FreakStudioCN/micropython-linear-stage](https://github.com/FreakStudioCN/micropython-linear-stage)，私有可见性。运动驱动版本0.3.2，传感器接口版本0.1.0。
 
 ## 文件与安装
 
@@ -19,7 +19,7 @@ mpremote connect YOUR_PORT resume fs cp tb6600.py :tb6600.py
 mpremote connect YOUR_PORT resume fs cp linear_stage_inputs.py :linear_stage_inputs.py
 ```
 
-`package.json`可供后续mip分发使用，相对源引用正确；远端URL、网络mip安装尚未验证。板级文件和示例不自动安装，不覆盖main.py。不需要传感器接口时只复制tb6600.py。
+`package.json`可供后续mip分发使用，相对源引用正确；私有仓库不保证匿名mip安装；网络mip安装未验证，推荐授权克隆后通过mpremote复制。板级文件和示例不自动安装，不覆盖main.py。不需要传感器接口时只复制tb6600.py。
 
 ## 使用范围
 
