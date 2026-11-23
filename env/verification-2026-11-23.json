@@ -192,10 +192,10 @@
     "ffmpeg_check_scope": "version detection only; not live capture or encoding acceptance"
   },
   "files_sha256": {
-    "environment.yml": "c70788b4f3ebe98201ae25a51ce680fd9500764f5606e27c01ff7fc99be8e6c2",
-    "requirements-lock.txt": "90e19ccf9440352236b6c30a843de523262ce7ef5e763998e667845818e8fc04",
-    "env/environment-verified-win-64.yml": "ef33f758e7e1e9e43ffb45dd7681b0bc4c4ea32cd77b99ae4cb49dbcf47794d2",
-    "env/conda-explicit-win-64.txt": "915a2bed38beead9716c89c9690c456bfc7573cf94812c9254175e9a45ba5dd1",
-    "docs/setup/conda-environment.md": "f097e0fc6301376b4936934c4ddc66544e64088b92bd6c3f3590d22396115aad"
+    "environment.yml": "fcebdb55ec5cab98875d5e57acbf17a8ee715ee729578b0b1af7e542c82ba63a",
+    "requirements-lock.txt": "8d05339be0432ebfbc9be430253e596d07627efac3012aab760dadbefbafb11c",
+    "env/environment-verified-win-64.yml": "e8fe570e270bc49e09cdd03bf616bb53a1c8c432808a7f3998c6ca644741f65b",
+    "env/conda-explicit-win-64.txt": "989ae19deb255526ccf51ef7d85bb7053caa4bdd8837341af7177b978dc923c1",
+    "docs/setup/conda-environment.md": "1602b69810812a3bab205ee2421fe487ed903905f3e71149d56aa278793b2f29"
   }
 }
