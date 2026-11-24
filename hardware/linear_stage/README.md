@@ -15,3 +15,7 @@
 D0/GPIO1→ENA+、D1/GPIO2→DIR+、D2/GPIO3→PUL+、负端共GND；ENA低锁轴/高释放为用户确认。详细供电、信号和原始依据见specifications.md，传感器工业输出不得直接接3.3V GPIO。
 
 2026-11-24起硬件、固件、驱动、示例、测试和文档均在套装直接维护，不再外部同步。以前的核对过程完整保存在docs/archive/linear_stage_source/hardware-notes-before-integration.md；其中未知/限制是当时状态，以当前清单及组件验证记录为准。
+
+资料来源为总任务第2.1、2.3、4.2–4.3节及已记录的用户确认；规划不作为到货证据。
+
+[实物视频截帧](../../docs/assets/readme/linear-stage.jpg)及[图片来源](../../docs/assets/readme/README.md)随双语README资料保留；照片不证明尺寸/定位精度，也不代替CAD。

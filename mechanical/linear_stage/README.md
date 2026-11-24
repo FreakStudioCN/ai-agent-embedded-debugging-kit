@@ -5,3 +5,5 @@
 采购来源：https://m.tb.cn/h.jPBVUNk?tk=7tkJ63pNKF4 ，标签为42步进电机带编码器滑台套件，出处为总任务2.1。该链接是采购参考，不等于模型文件；本次页面正文无法直接读取。
 
 实际型号、接线和已知参数见../../hardware/linear_stage/specifications.md及inventory.json。滑台长宽高、有效行程、导程、安装孔尺寸仍待厂家文件或量具测量。收到真实机械文件后在本目录按版本归档，登记来源、适配实物和SHA256；无资料时不创建虚构模型。
+
+现有实物照片为../../docs/assets/readme/linear-stage.jpg，来源见../../docs/assets/readme/README.md；保留该实物资料，但它不是CAD或量具尺寸记录。用户确认尺寸与原文件后续补齐。

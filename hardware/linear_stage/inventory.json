@@ -88,7 +88,7 @@
         "A",
         "B"
       ],
-      "output_type": "PNP/push-pull per user; exact circuit not independently verified",
+      "output_type": "PNP (user confirmed 2026-11-24); exact internal circuit/load ratings not independently documented",
       "wiring": {
         "red": "DC 5-24V",
         "black": "0V",
@@ -100,7 +100,12 @@
       "decoder": null,
       "decoding_multiplier": null,
       "counts_per_rev": null,
-      "stage_mm_per_encoder_rev": null
+      "stage_mm_per_encoder_rev": null,
+      "output_type_confirmation": {
+        "date": "2026-11-24",
+        "source": "user explicitly confirmed 编码器是PNP的",
+        "measured": false
+      }
     }
   },
   "procurement_reference": {
@@ -120,6 +125,8 @@
     },
     "usable_travel_mm": null,
     "lead_mm_per_motor_rev": null,
-    "measurement_status": "not measured; do not infer from pulse count or listing title"
+    "measurement_status": "not measured; do not infer from pulse count or listing title",
+    "physical_photo": "docs/assets/readme/linear-stage.jpg",
+    "physical_photo_source_notes": "docs/assets/readme/README.md"
   }
 }

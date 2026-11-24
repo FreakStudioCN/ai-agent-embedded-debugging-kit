@@ -81,7 +81,7 @@ GitHub官方说明普通仓库网页与旧Git clone/fetch/push会重定向；更
 图4：整机侧面安装状态、夹爪及摄像头位置，线缆沿连杆固定。
 图5：关节附近USB线走向与预留线段近照；运动中是否拉扯以现场检查和视频为依据。
 
-手机运动录像及相机录像：[PoC阶段证据](https://f1829ryac0m.feishu.cn/wiki/IWVXw7ahpiAuyckT0Qccio5ynNc#CfF0d1rCHo8WC1xDZ5QczlzOnWe)。
+手机运动录像及相机录像：PoC阶段证据（内部来源，链接不公开）。
 
 ## 三、建议目录
 
@@ -314,8 +314,8 @@ Python 128项回归、运动学639项及夹爪检查通过。旧新Git地址、�
 
 ## 参考资料
 
-- 整体任务 https://f1829ryac0m.feishu.cn/docx/Jwo1dIiAGoc7iUxGVMMcQfZrnGm
-- 试装资料 https://f1829ryac0m.feishu.cn/docx/RSxudp1YDoLvPUx1OuncDcQJn7r
+- 整体任务 （内部来源，链接不公开）
+- 试装资料 （内部来源，链接不公开）
 - 当前仓库（尚未更名） https://github.com/FreakStudioCN/micropython-robot-arm
 - 推荐新仓库（待确认实施） https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit
 - 新版STEP提交 https://github.com/FreakStudioCN/micropython-robot-arm/commit/b02d097

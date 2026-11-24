@@ -8,4 +8,4 @@
 
 3MF与有效打印模型对应关系由用户确认。打开原生装配时避免Toolbox用本机标准齿轮替换包内零件，详见报告。原生引用通过不代表实物尺寸/运动精度或两套安装验证均通过。
 
-[安装照片及整体方案](https://f1829ryac0m.feishu.cn/docx/Drwld0cIyoAFFuxuriXcLO6knMf)；[运动证据](https://f1829ryac0m.feishu.cn/wiki/IWVXw7ahpiAuyckT0Qccio5ynNc)。
+安装照片及整体方案（内部来源，链接不公开）；运动证据（内部来源，链接不公开）。
