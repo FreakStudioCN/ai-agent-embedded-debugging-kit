@@ -43,26 +43,17 @@
   },
   "latest_device_test": {
     "port": "COM21",
-    "driver_version": "0.3.2",
-    "submitted_pulses_total": 12800,
-    "directions": [
-      0,
-      1
-    ],
-    "pulses_per_direction": 6400,
-    "rmt_completion_reported": 12800,
-    "elapsed_ms_per_direction": [
-      2184,
-      2184
-    ],
+    "experiment": "rpm_300_profile",
+    "direction_level": 1,
+    "submitted_pulses_total": 32000,
+    "rmt_completion_reported": 32000,
+    "elapsed_ms": 2314,
+    "requested_peak_rpm": 300,
+    "programmed_peak_period_us": 63,
     "ena_readback": 0,
-    "physical_displacement_verified": false,
-    "physical_return_verified": false,
-    "waveform_measured": false,
-    "user_observation": null,
-    "requested_frequency_hz": 3200,
-    "stop_state_verified": false,
-    "stop_note": "3200Hz batch-stop tested offline only; no mid-motion stop in physical run"
+    "physical_position_known": false,
+    "user_observation": "运动正常，无明显异常",
+    "authorization": "DIR=1 only from pre-test position; not a reusable travel margin"
   },
   "authorized_test_range": {
     "pulses_each_direction": 6400,
