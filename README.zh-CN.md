@@ -65,7 +65,7 @@ flowchart LR
 | --- | --- | --- |
 | 真实实验台 | 开发板、PCB/PCBA、样机、工装 | 每次实验需要核对设备身份和现场条件 |
 | 观察与测量 | USB/双目相机、观察定位、OpenCV、MLX90640、USB 音频、电压/电流/功率、WS2812 | USB 相机与视觉工具可用，其余按下表分别登记 |
-| 物理操作 | 步进轴、舵机、机械臂、夹爪、线轨 | 已有 UART 臂工具及独立有限脉冲线轨驱动 |
+| 物理操作 | 步进轴、舵机、机械臂、夹爪、线轨 | 已有 UART 臂工具及套装内有限脉冲线轨驱动 |
 | 嵌入式控制 | MicroPython、USB/UART/GPIO、传感器、自研 PCB | ESP32-C3 综合控制器仍规划；现有线轨使用 XIAO ESP32S3/TB6600 |
 | Agent 软件 | Codex、Skill、Python API、串口及相机工具 | 已有操作 Skill 和模块接口，统一多设备 SDK 是后续目标 |
 | 实验反馈 | 任务、动作、响应、图像、视频、干预、失败、修正 | JSONL 和录像工具已存在，跨模块测量记录尚待完善 |
@@ -75,7 +75,7 @@ flowchart LR
 | 位置 | 职责 |
 | --- | --- |
 | [`host_control/`](host_control) | UART 适配、长连接会话、事件与扫视工具 |
-| [`drivers/micropython/`](drivers/micropython) | 机械臂驱动维护源与固定版本的套装内线轨源码 |
+| [`drivers/micropython/`](drivers/micropython) | 机械臂与线轨驱动维护源，均在套装内直接维护 |
 | [`camera/`](camera)、[`recording/`](recording)、[`visual_observation/`](visual_observation) | 共享采集、录像与原始图像监控 |
 | [`perception/`](perception/README.md)、[`observation/`](observation/README.md) | 通用视觉算法及结构化/图像双观察路径 |
 | [`hardware/`](hardware/README.md)、[`firmware/`](firmware/README.md)、[`mechanical/`](mechanical/README.md) | 组件状态、板级配置、CAD 与来源记录 |

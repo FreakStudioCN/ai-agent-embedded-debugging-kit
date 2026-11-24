@@ -65,7 +65,7 @@ The simulator previews geometry and command semantics. It does not certify colli
 | --- | --- | --- |
 | Physical testbed | Development boards, PCBs/PCBAs, prototypes, fixtures | Each experiment needs an identified device and local setup |
 | Observation and measurement | USB/stereo cameras, positioning, OpenCV, MLX90640, USB audio, voltage/current/power, WS2812 | USB camera and visual tools are available; other modules have individual status below |
-| Physical actuation | Stepper axes, servos, arm, gripper, linear stage | Existing UART arm tools and a separate finite-pulse stage driver |
+| Physical actuation | Stepper axes, servos, arm, gripper, linear stage | Existing UART arm tools and an in-tree finite-pulse stage driver |
 | Embedded control | MicroPython, USB/UART/GPIO, sensors and custom PCBs | ESP32-C3 integrated controller is planned; current stage bring-up uses XIAO ESP32S3 and TB6600 |
 | Agent software | Codex, skills, Python APIs, serial and camera tooling | Existing skill and module-specific tools; a universal multi-device SDK is a goal |
 | Experiment feedback | Tasks, actions, responses, images, video, interventions, failures and corrections | JSONL/recording tools exist; full cross-module measurement trace coverage is a goal |
