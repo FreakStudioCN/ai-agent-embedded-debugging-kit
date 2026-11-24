@@ -1,0 +1,180 @@
+{
+  "date": "2026-11-24",
+  "scope": "Existing evidence inventory only; not a new device test",
+  "records": [
+    {
+      "path": ".runtime/linear_stage_test/regression-1600.log",
+      "bytes": 21123,
+      "sha256": "ddb6d00b0e4f8a94c973b3e5ff261c6a1ac6de72b9b4224e190b9ede4dc54acc",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-2400.log",
+      "bytes": 21381,
+      "sha256": "e792da8100b3388ceac4d8ac4b1a7fcfebf2ae0793329d2a4a7df81c8a3710ab",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-3200.log",
+      "bytes": 21499,
+      "sha256": "11fe2a8ceb142dd0cabf6fab70d3e4dc0b2eeffdfe24ef4b2bc92da8e6402607",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-6400.log",
+      "bytes": 20883,
+      "sha256": "a95348a7132d5e1547b49ee5e50b739a6ee86e18800baf01676752400e24bf7a",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-independent.log",
+      "bytes": 22469,
+      "sha256": "a69e7c06b52a9e507ba46a4132148049e4093c1d8da028bde687077b9d95fa77",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-rpm300-32000.log",
+      "bytes": 22631,
+      "sha256": "3a9c1a707a62d75eedb27921741756804fde2d788f53d451c5cce52b9a1abeae",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/regression-rpm300.log",
+      "bytes": 22631,
+      "sha256": "b399daf3d0629be3e44f2502ac685c13962b44cf56085fcb13cde35927dc73ef",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_3200_20261123_183317.log",
+      "bytes": 2088,
+      "sha256": "9ba650c73def11a14692a76a3077d8034d1e78ee85b95d487ee81731f1240e51",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_3200_20261123_183545.log",
+      "bytes": 2088,
+      "sha256": "44496005482b660b998488f0cf13934827314c9c2f3aa4cd487f65b478bd67aa",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400.log",
+      "bytes": 2094,
+      "sha256": "a4c0ebb3f78ad603c0d102a5262c60ea0dc2b33fd36ac69566c09afcb1676a3a",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400.py",
+      "bytes": 1550,
+      "sha256": "787490ec2df71e1fb181d6a64c8cdc1cbce566f8cc778a1fff8fd23d12e9271d",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_1600hz.log",
+      "bytes": 2092,
+      "sha256": "cf97c012c556a70a872ea54bdef579a920e447d168c3900c0cd94791de4d8038",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_1600hz.py",
+      "bytes": 1599,
+      "sha256": "887e79f759aac88dd6ff0bc2d09da231446fecc0aa56c4ca8045ab644439ed08",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_1600hz_video.log",
+      "bytes": 2092,
+      "sha256": "20e2955b4556a2b3d77efb53fa8e53ea4966e3db8acae5296900e34e26801eb3",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_200hz.log",
+      "bytes": 2104,
+      "sha256": "4b3add2564bf51fa4df8fe06aa1dd658914245a4fd981c2f90da246297be6c67",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_200hz.py",
+      "bytes": 1597,
+      "sha256": "4863d12a8145441f3ca4374d572e98d024836b5ac062f94ec38007e2c7fe1711",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_2400hz.log",
+      "bytes": 2090,
+      "sha256": "8bf3d15fe403fe5cb861b83ead9ce3684a70cc0ea199693acc1d8622ff2df93d",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_2400hz.py",
+      "bytes": 1599,
+      "sha256": "1d9f02121c408916d8bb67d8134e927b5734e927c9bc6a1e8d1f417ece59d98f",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_3200hz.log",
+      "bytes": 2088,
+      "sha256": "dce5ed026fe121bd832f6de99032f2958f842ecabf604567a4facf18e968a878",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_3200hz.py",
+      "bytes": 1599,
+      "sha256": "5c7b00fdec87f2f94a76e235664ad1af9fa027a85ab591534c49761e48c904c3",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_3200hz_after_usb.log",
+      "bytes": 2088,
+      "sha256": "1ba9f917b68e10e350f3640393daa1e3137a6658ccee673f9c8f46cd74197a3e",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_3200hz_repeat.log",
+      "bytes": 2344,
+      "sha256": "20d143d53bee2d4cf769b6ce2203d699a11136005060034ca03a905464511596",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/round_6400_3200hz_repeat_recovery.log",
+      "bytes": 324,
+      "sha256": "f88894ba605851b10761b3a7fc8c9fd2fe91c78a7b46cd7ace195e37386328d1",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/rpm300_32000_dir1.py",
+      "bytes": 2883,
+      "sha256": "daaa5cc9f9f33766d93c66cfbb5f0e4dbc8e284210fd4b8bef25f1997d8ea8b8",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/rpm300_32000_dir1_20261123_190305.log",
+      "bytes": 241,
+      "sha256": "197d89af7030e2756682d46871c1ed5a322fb16b626046ad6758574629d7e81c",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/rpm300_3200_20261123_190114.log",
+      "bytes": 226,
+      "sha256": "97138f279793306ec9662b9c947d9d112c9219218ad1534ac2c7997506f36030",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/rpm300_3200_20261123_190137.log",
+      "bytes": 234,
+      "sha256": "d580e490be84e12b6aa753551fbda1d36ddfbe29cdf4899bc4f38f0074a3a2c5",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/two_pulse_test.log",
+      "bytes": 2242,
+      "sha256": "249462a86878167a2080e4856cc538256d6ac7a78e356f31161725df7a020ea2",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    },
+    {
+      "path": ".runtime/linear_stage_test/two_pulse_test.py",
+      "bytes": 1555,
+      "sha256": "e21c9f873efece84b0d0a3a225f3e88e7015cdc4bf78a287f12c1fed589a1ff5",
+      "availability": "original remains in ignored local runtime; not automatically available in ordinary clone"
+    }
+  ]
+}

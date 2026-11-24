@@ -48,12 +48,10 @@ ENA极性已由用户确认并固化到板级配置：低电平使能锁轴，�
 
 最新3200Hz设置测试：v0.3.2，周期量化313us，单批最多32脉冲/10.016ms。各方向6400脉冲约2.18秒，RMT累计完成12800，ENA=0保持锁轴；实际波形和定位精度未测，现场反馈待确认。批次间有间隙，整段平均约2930脉冲/秒，不承诺连续精确3200Hz。
 
-## 独立维护与工业传感器预留
+## 套装内维护与工业传感器预留
 
-独立库 https://github.com/FreakStudioCN/micropython-linear-stage 已作为Git子模块接入 `drivers/micropython/linear_stage/`。该子模块是套装内唯一驱动实现，固定提交见[source-lock.json](../../hardware/linear_stage/source-lock.json)；原驱动路径仅保留PC导入兼容转发，不可将转发文件复制到板端。板端直接复制子模块根tb6600.py及按需linear_stage_inputs.py，robot_arm导入名与根分发清单不变。
+驱动直接维护在drivers/micropython/linear_stage，已移除Git子模块和双仓同步。板端配置/实验在firmware/linear_stage、例程在examples/linear_stage、测试在tests，硬件接线和规格在hardware/linear_stage。普通克隆即取得完整代码；旧PC驱动导入兼容转发保留，板端复制维护源。
 
-首次初始化、维护者升级固定提交、使用者拉取更新及远端URL变更的完整操作，见[子模块维护说明](../setup/submodules.md)。独立库更新后，套装需要显式更新子模块commit、运行同步工具、暂存关联资产并通过测试，再提交推送套装；仅独立库push不会自动改变套装版本。通常不修改.gitmodules中的URL。
-
-tools/sync_linear_stage.py只从已初始化、干净的子模块同步板级配置/示例/传感器说明并登记散列，不再复制驱动源码。现有PC兼容入口与robot_arm分发保持不变。
+[日常维护与部署](../setup/linear-stage-maintenance.md)说明直接修改、测试、提交及板端复制方法；[来源记录](../../hardware/linear_stage/provenance.json)保留原8b184a4、MIT许可和历史散列。旧独立仓库不删除，不再作为套装同步上游。商品参考、实际型号、待补尺寸及CAD缺口见[规格清单](../../hardware/linear_stage/specifications.md)与[机械资料](../../mechanical/linear_stage/README.md)。
 
 已预留3个SN04-P逻辑输入（center/minimum/maximum）及HN3806-AB-600F 600线AB编码器的外部计数器接口；未配置返回未知，转换后极性/解码倍率显式指定。新接口只读，不自动回零、运动联锁或闭环。电平转换、GPIO及解码器尚未确定，不连接工业输出到3.3V GPIO。见[传感器接入约定](../../hardware/linear_stage/sensor-inputs.md)。

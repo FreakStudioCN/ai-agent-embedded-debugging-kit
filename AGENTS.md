@@ -12,4 +12,5 @@
 - 修改代码后运行 `python -B -m unittest discover -s tests -v`、`node simulator/check_math.mjs`、`node simulator/check_gripper.mjs`。文档修改核对路径与示例。
 - 运行照片与日志放 `.runtime/`。实拍资料和本机 CAD 依赖留在忽略目录。模型来源与许可证见 `simulator/README.md` 及上游目录。
 
-- 线轨驱动为drivers/micropython/linear_stage Git子模块；先git submodule update --init --recursive。独立库先提交推送，套装固定其commit；tools/sync_linear_stage.py仅同步板级配置/示例/说明，不维护驱动副本。旧驱动路径为PC兼容转发，板端部署复制子模块中的原文件。
+
+- 线轨是套装内直接维护组件：驱动drivers/micropython/linear_stage；板端配置/实验firmware/linear_stage；例程examples/linear_stage；硬件hardware/linear_stage；测试tests。普通克隆即可使用，不再初始化子模块或运行sync_linear_stage.py；来源与许可见hardware/linear_stage/provenance.json，旧独立仓库仅历史追溯。不要在两处手工维护源码。

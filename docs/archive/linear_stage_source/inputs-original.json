@@ -1,0 +1,42 @@
+{
+  "source": "user-supplied model and wiring; not physical input validation",
+  "switches": {
+    "model": "SN04-P",
+    "quantity": 3,
+    "roles": [
+      "center",
+      "minimum",
+      "maximum"
+    ],
+    "wiring": {
+      "BN_brown": "10-30V",
+      "BU_blue": "0V",
+      "BK_black": "PNP NO"
+    },
+    "gpio": null,
+    "conditioned_active_levels": null,
+    "conditioning_circuit": null
+  },
+  "encoder": {
+    "model": "HN3806-AB-600F",
+    "vendor": "锐乐尔电气",
+    "lines_per_rev": 600,
+    "channels": [
+      "A",
+      "B"
+    ],
+    "output_type": "PNP/push-pull per user; exact circuit not independently verified",
+    "wiring": {
+      "red": "DC 5-24V",
+      "black": "0V",
+      "white": "OUTA",
+      "green": "OUTB"
+    },
+    "gpio": null,
+    "conditioning_circuit": null,
+    "decoder": null,
+    "decoding_multiplier": null,
+    "counts_per_rev": null,
+    "stage_mm_per_encoder_rev": null
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "integration_date": "2026-11-24",
+  "maintenance": "In-tree kit sources; historical origin only, not a dependency lock",
+  "source_repository": "https://github.com/FreakStudioCN/micropython-linear-stage",
+  "source_commit": "8b184a4fad574216a6d241fc5f244add9a92ec39",
+  "source_history": "docs/archive/linear_stage_source/source-history.json",
+  "history_preservation": "Non-squashed merge parent retains original commits; old repository remains untouched",
+  "license": "MIT; original notice retained in drivers/micropython/linear_stage/LICENSE",
+  "original_file_sha256": {
+    ".gitignore": "9551466eddb15038e82955c3323767e1e7116cf5f0b2ef77b0c208d9a4b329d4",
+    "AGENTS.md": "5060f840f6a96fa7dfcfc5e42ce5467e9716e896582b4346bc3941c590d0cb31",
+    "docs/extraction.json": "e43ca191ece631fa58a9de82919d2285897f33da8e7e74b1b414a12b3bc93224",
+    "docs/inputs.md": "ee7f022ecb0c1c83a80bc9c9f90b683db00eef142f9428a9dcc1488c04e9ee5a",
+    "docs/verification.md": "3e8bcac4f3a3ce341a4aec64d697de2e20d6ae548b42b18665a220d095f87246",
+    "examples/exercise.py": "eaa006d9f51149ef39b3fa20a27302c3cf6d0baab645fe1737d7ca1efe5a99a3",
+    "firmware/linear_stage/bringup.py": "3ab63a6a1e244c674db1480340687e4b1bef17c54cad16db8af6a70bed4d21d2",
+    "hardware/inputs.json": "21f914b588318a0a15dec850a8c33837cd288536966fe5d5e503e624f341ddcd",
+    "LICENSE": "75aa400a7e696c2efde4ab7619c446041751d5777879f6e7a1a9003a72cc8e43",
+    "linear_stage_inputs.py": "cc7bfbdd2a28b1c9e224c31651291cd0b4ac43d2dc2d37c9da50c01e81c566c9",
+    "package.json": "ef3ad6a32e15fa5e22efca56f3d8ba70b3862b3d3bea529311699f6a0377e01b",
+    "README.md": "3a65f1fda3891f8adc2fb0d5dc13bd9da8ebe3a18c482a62d221c2c234d3bb2d",
+    "tb6600.py": "9c1b67f1ea6f40d008d48cb55d4d99a0dc3bc11f4c99fc0b15b363c508463ddf",
+    "tests/test_inputs.py": "bc27d3cb20b82c6ff9a6501ce621131acf2481aa42a5c20eb5d9914895173e2a",
+    "tests/test_tb6600.py": "1175011ceb283e283880a7a072b8d02199b5b8eec35661f9172ddf20600b94e9"
+  },
+  "local_uncommitted_work_preserved": [
+    {
+      "original_path": "examples/rpm_300_test.py",
+      "destination": "firmware/linear_stage/rpm_300_test.py",
+      "sha256_before_adaptation": "9c651493fdebd8ae8236d9086cce85ebc4ad6d6bd49161cfce028b5caa599de3",
+      "source_status": "uncommitted local file; not part of 8b184a4"
+    },
+    {
+      "original_path": "tests/test_rpm_profile.py",
+      "destination": "tests/test_linear_stage_rpm_profile.py",
+      "sha256_before_adaptation": "1a04c7d890d7c9f8acb851152623d316ee772d2c8b142cd9d55147344c669982",
+      "source_status": "uncommitted local file; not part of 8b184a4"
+    }
+  ],
+  "archive_file_sha256": {
+    "docs/archive/linear_stage_source/extraction.json": "e43ca191ece631fa58a9de82919d2285897f33da8e7e74b1b414a12b3bc93224",
+    "docs/archive/linear_stage_source/gitignore-original.txt": "9551466eddb15038e82955c3323767e1e7116cf5f0b2ef77b0c208d9a4b329d4",
+    "docs/archive/linear_stage_source/hardware-notes-before-integration.md": "fedcb65eb49a28f6b159b6701635ff688f1e3943dd47ef1b14cce44bd779a65a",
+    "docs/archive/linear_stage_source/inputs-original.json": "21f914b588318a0a15dec850a8c33837cd288536966fe5d5e503e624f341ddcd",
+    "docs/archive/linear_stage_source/maintainer-instructions-original.txt": "5060f840f6a96fa7dfcfc5e42ce5467e9716e896582b4346bc3941c590d0cb31",
+    "docs/archive/linear_stage_source/package-original.json": "ef3ad6a32e15fa5e22efca56f3d8ba70b3862b3d3bea529311699f6a0377e01b",
+    "docs/archive/linear_stage_source/README-original.md": "3a65f1fda3891f8adc2fb0d5dc13bd9da8ebe3a18c482a62d221c2c234d3bb2d",
+    "docs/archive/linear_stage_source/README.md": "2dd834727e2ac3a252c402e3b47040293dd5b856c7e542164ae86f1a5761deec",
+    "docs/archive/linear_stage_source/source-history.json": "db19e03a893a0a6ab341d2667b35fa60773ae698e8b0ff89758aed35121f5509",
+    "docs/archive/linear_stage_source/source-lock-submodule-original.json": "dc94ef7eee144ec9479102a9d81b68a9b0ef1b48a8e8301cf5ba154f3c828dad",
+    "docs/archive/linear_stage_source/submodule-workflow-original.md": "35db3cc123f84c07c2c74da0d62a14b674f50819168f265294880a80b17e4593",
+    "docs/archive/linear_stage_source/sync-linear-stage-original.py.txt": "57e52d7bde615de78b4d28030202a8c7f0d64442eb20db9f3bf4c717ba989ac4",
+    "docs/archive/linear_stage_source/verification-original.md": "3e8bcac4f3a3ce341a4aec64d697de2e20d6ae548b42b18665a220d095f87246"
+  },
+  "note": "Original hashes describe historical input only. Current driver, firmware, examples and tests are maintained directly in the kit and may evolve without re-pinning an external repository.",
+  "historical_repository_retirement_commit": "87f4265",
+  "historical_repository_status": "old repository retained; README directs all future development to the kit"
+}

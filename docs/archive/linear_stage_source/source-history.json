@@ -1,0 +1,23 @@
+[
+  {
+    "commit": "8b184a4fad574216a6d241fc5f244add9a92ec39",
+    "parents": "1ec7835d9025b2f1e90590cafeba2ca62ac40f48",
+    "author_date": "2026-11-23T17:45:40+08:00",
+    "author": "yangcong-bit",
+    "subject": "Document debugging-kit submodule integration"
+  },
+  {
+    "commit": "1ec7835d9025b2f1e90590cafeba2ca62ac40f48",
+    "parents": "a108f5dd7d457e84d6aabd5dc88e07439efdb557",
+    "author_date": "2026-11-23T17:42:48+08:00",
+    "author": "yangcong-bit",
+    "subject": "Document private organization repository and authenticated installation"
+  },
+  {
+    "commit": "a108f5dd7d457e84d6aabd5dc88e07439efdb557",
+    "parents": "",
+    "author_date": "2026-11-23T16:53:41+08:00",
+    "author": "yangcong-bit",
+    "subject": "Extract single-axis MicroPython driver and reserve industrial inputs"
+  }
+]

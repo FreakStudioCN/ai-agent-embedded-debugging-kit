@@ -14,7 +14,7 @@ git remote set-url origin https://github.com/FreakStudioCN/ai-agent-embedded-deb
 |---|---|---|
 |观察机械臂、夹爪|现有UART驱动、PC长连接、扫视及仿真；ok不是实测停稳|[驱动](drivers/micropython/robot_arm.py)、[会话](host_control/session.py)、[说明](docs/components/observer_arm.md)|
 |USB相机、录像与观察窗口|共享JPEG/MJPEG采集、Tk监控及FFmpeg录像；已安装实际摄像头；双目/精确标定未验证|[camera](camera/server.py)、[录像](recording/recorder.py)、[监控](docs/setup/monitor.md)|
-|线轨/滑台及综合控制器|XIAO ESP32S3/TB6600有限脉冲及软件停止代码，待实机验证；综合控制器仍规划|[线轨](docs/components/linear_stage.md)、[控制器](docs/components/stepper_servo_controller.md)|
+|线轨/滑台及综合控制器|XIAO ESP32S3/TB6600有限脉冲及软件停止代码，已有历史板端记录，位置/传感器验收未完成；综合控制器仍规划|[线轨](docs/components/linear_stage.md)、[控制器](docs/components/stepper_servo_controller.md)|
 |WS2812灯光|规划：补光、颜色/亮度及供电保护|[说明](docs/components/lighting.md)|
 |电源/功耗|规划：USB/电池测量及被测设备断电重启|[说明](docs/components/power_meter.md)|
 |USB音频|规划：成熟USB麦克风/扬声器直接连接PC|[说明](docs/components/audio.md)|
@@ -103,6 +103,8 @@ node simulator/check_gripper.mjs
 
 These checks are offline and do not constitute a new physical motion/accuracy test. 模型及第三方代码按各自来源许可证；本库MIT许可不覆盖第三方许可边界。
 
-线轨驱动以[独立库](https://github.com/FreakStudioCN/micropython-linear-stage)子模块接入 `drivers/micropython/linear_stage/`，固定验证版本；驱动仅在独立库维护，套装保留板级配置、示例及[来源锁](hardware/linear_stage/source-lock.json)。三路SN04-P及一路HN3806-AB-600F仍仅接口预留，见[接入约定](hardware/linear_stage/sensor-inputs.md)。
+线轨是套装内直接维护的组件，驱动源码在[drivers/micropython/linear_stage](drivers/micropython/linear_stage/README.md)，板端配置/实验、例程、测试和硬件资料分别放firmware/linear_stage、examples/linear_stage、tests和hardware/linear_stage。普通git clone即可取得代码，无需子模块初始化、独立库权限或双仓同步。
 
-首次克隆使用 `git clone --recurse-submodules https://github.com/FreakStudioCN/ai-agent-embedded-debugging-kit.git`；已有克隆执行 `git submodule update --init --recursive`。两个仓库均需授权访问；普通clone不会自动下载子模块。升级固定版本及使用者拉取步骤见[子模块维护说明](docs/setup/submodules.md)；独立库推送后，还需提交并推送套装中的子模块指针。
+[采购来源与实际规格](hardware/linear_stage/specifications.md)记录原闲鱼链接、已知型号/接线和缺失尺寸；[机械资料状态](mechanical/linear_stage/README.md)明确尚无CAD，商品链接不作为CAD。三路SN04-P和HN3806-AB-600F仍未完成电平转换/实物输入验收，见[传感器核对](hardware/linear_stage/sensor-inputs.md)。
+
+日常直接修改本仓库、测试、提交并推送，见[线轨维护与部署](docs/setup/linear-stage-maintenance.md)。[原来源及历史](hardware/linear_stage/provenance.json)保留原MIT许可、8b184a4及未提交实验迁入信息；旧独立仓库仅作历史来源，不再作为维护上游。

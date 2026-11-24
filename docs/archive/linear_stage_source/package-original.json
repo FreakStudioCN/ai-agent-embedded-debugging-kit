@@ -1,0 +1,14 @@
+{
+  "version": "0.3.2",
+  "description": "Single-axis TB6600 and reserved industrial sensor adapters",
+  "urls": [
+    [
+      "tb6600.py",
+      "tb6600.py"
+    ],
+    [
+      "linear_stage_inputs.py",
+      "linear_stage_inputs.py"
+    ]
+  ]
+}

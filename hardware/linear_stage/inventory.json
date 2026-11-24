@@ -102,5 +102,24 @@
       "counts_per_rev": null,
       "stage_mm_per_encoder_rev": null
     }
+  },
+  "procurement_reference": {
+    "url": "https://m.tb.cn/h.jPBVUNk?tk=7tkJ63pNKF4",
+    "label": "闲鱼｜42步进电机带编码器滑台一套，含编码器、传感器及配件",
+    "source": "总任务2.1原采购参考，不代替实物铭牌/CAD",
+    "page_access_check_date": "2026-11-24",
+    "page_access_status": "direct webpage extraction failed; listing dimensions not independently retrieved"
+  },
+  "mechanical_documents": {
+    "cad_received": false,
+    "original_hardware_files_received": false,
+    "overall_dimensions_mm": {
+      "length": null,
+      "width": null,
+      "height": null
+    },
+    "usable_travel_mm": null,
+    "lead_mm_per_motor_rev": null,
+    "measurement_status": "not measured; do not infer from pulse count or listing title"
   }
 }

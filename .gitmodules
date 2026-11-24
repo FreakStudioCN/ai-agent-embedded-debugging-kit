@@ -1,3 +1,0 @@
-[submodule "drivers/micropython/linear_stage"]
-	path = drivers/micropython/linear_stage
-	url = https://github.com/FreakStudioCN/micropython-linear-stage.git

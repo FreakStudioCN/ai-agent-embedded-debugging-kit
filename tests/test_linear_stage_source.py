@@ -1,4 +1,4 @@
-"""Pin, source integrity and legacy imports need no sibling checkout or hardware."""
+"""In-tree ownership, historical provenance and compatible imports; no device IO."""
 import hashlib
 import importlib
 import json
@@ -10,22 +10,25 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class LinearStageSourceTests(unittest.TestCase):
-    def test_pinned_files_match_recorded_source_hashes(self):
-        manifest = json.loads((ROOT / 'hardware/linear_stage/source-lock.json').read_text())
-        module = ROOT / manifest['submodule_path']
-        actual = subprocess.check_output(['git', '-C', str(module), 'rev-parse', 'HEAD'], text=True).strip()
-        self.assertEqual(actual, manifest['source_commit'])
-        staged = subprocess.check_output(['git', 'ls-files', '--stage', manifest['submodule_path']], cwd=ROOT, text=True)
-        self.assertEqual(staged.split()[:2], ['160000', actual])
-        for record in manifest['files']:
-            with self.subTest(path=record['target']):
-                source = subprocess.check_output(['git', '-C', str(module), 'show', actual + ':' + record['source']])
-                self.assertEqual((module / record['source']).read_bytes().replace(b'\r\n', b'\n'), source)
-                target = (ROOT / record['target']).read_bytes().replace(b'\r\n', b'\n')
-                self.assertEqual(target, source)
-                self.assertEqual(hashlib.sha256(target).hexdigest(), record['sha256'])
+    def test_sources_are_regular_kit_files_not_a_submodule(self):
+        self.assertFalse((ROOT / '.gitmodules').exists())
+        self.assertFalse((ROOT / 'drivers/micropython/linear_stage/.git').exists())
+        for name in ['tb6600.py', 'linear_stage_inputs.py']:
+            path = 'drivers/micropython/linear_stage/' + name
+            self.assertTrue((ROOT / path).is_file())
+            staged = subprocess.check_output(['git', 'ls-files', '--stage', path], cwd=ROOT, text=True)
+            self.assertTrue(staged.startswith('100644 '), staged)
+        self.assertFalse((ROOT / 'tools/sync_linear_stage.py').exists())
+        self.assertFalse((ROOT / 'hardware/linear_stage/source-lock.json').exists())
 
-    def test_legacy_imports_use_the_submodule_implementation(self):
+    def test_historical_provenance_is_kept_without_locking_current_sources(self):
+        manifest = json.loads((ROOT / 'hardware/linear_stage/provenance.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(manifest['source_commit']), 40)
+        for path, digest in manifest['archive_file_sha256'].items():
+            self.assertEqual(hashlib.sha256((ROOT / path).read_bytes().replace(b'\r\n', b'\n')).hexdigest(), digest)
+        self.assertIn('MIT', (ROOT / 'drivers/micropython/linear_stage/LICENSE').read_text())
+
+    def test_legacy_imports_use_the_in_tree_implementation(self):
         for name in ['tb6600', 'linear_stage_inputs']:
             self.assertIs(importlib.import_module('drivers.micropython.' + name),
                           importlib.import_module('drivers.micropython.linear_stage.' + name))

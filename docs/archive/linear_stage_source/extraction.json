@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-23",
+  "origin_repository": "ai-agent-embedded-debugging-kit",
+  "origin_git_head": "abbe30193280e0159dc07d5eeb440774771dfa35",
+  "note": "driver and tests extracted from current uncommitted linear-stage work; no claim they exist in baseline commit",
+  "source_files": {
+    "tb6600.py": "681beb99bedaa5c515f06326d7aa46056787fe7122caae52b070883063280241",
+    "firmware/linear_stage/bringup.py": "cddcd3f2cf7bc6a09323c15babb7eed9db85b63a0e6b84029a51ced23c3e14ee",
+    "examples/exercise.py": "3140d3a5bbe0e1d46c7516a58893b83c2de31df01ec276a7da781127433766bd"
+  }
+}
