@@ -1,0 +1,52 @@
+{
+  "board": "集成式线轨控制板",
+  "displayed_version": "v1.0",
+  "archive_date": "2026-11-26",
+  "files": [
+    {
+      "file": "schematic.png",
+      "source_filename": "SCH_集成式线轨控制板_原理图_1-P1_2026-11-26.png",
+      "bytes": 2784442,
+      "sha256": "4c414e0c5522e46944f9a4673973ed35213bb3f1ec2862cacd9bc78fc68b411c",
+      "width": 8212,
+      "height": 2907,
+      "mode": "RGBA"
+    },
+    {
+      "file": "pcb-front.png",
+      "source_filename": "PCB_集成式线轨控制板_PCB_2026-11-26-正面.png",
+      "bytes": 961750,
+      "sha256": "bb04cf5653ef5e27b5bfc3ba991e7dd60d700b35ac273904dbe4bfd1ad9285a2",
+      "width": 2160,
+      "height": 1521,
+      "mode": "RGBA"
+    },
+    {
+      "file": "pcb-back.png",
+      "source_filename": "PCB_集成式线轨控制板_PCB_2026-11-26-反面.png",
+      "bytes": 886668,
+      "sha256": "94c5f51e61afb1fa8e36624e1c262e51db4b3f7d9c7e401d9dfad553a688f052",
+      "width": 2160,
+      "height": 1521,
+      "mode": "RGBA"
+    },
+    {
+      "file": "icon-transparent.png",
+      "source_filename": "集成式线轨控制板_ICON_透明背景.png",
+      "bytes": 654137,
+      "sha256": "56e08985c972d3652d45e08a65961b95ce6ef011546f29edd942dc11bf0ccefd",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "file": "icon-preview.png",
+      "source_filename": "integrated-icon-preview.png",
+      "bytes": 424004,
+      "sha256": "a80c6cf76f82f5a85706e84aeca861b79f00dd19dbcf02d91f7cf427d7751d23",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    }
+  ]
+}
