@@ -47,6 +47,20 @@
       "width": 1536,
       "height": 1024,
       "mode": "RGB"
+    },
+    {
+      "file": "BOM_集成式线轨控制板_v1.0_集成式线轨控制板_PCB_2026-11-26.xlsx",
+      "source_filename": "BOM_集成式线轨控制板_v1.0_集成式线轨控制板_PCB_2026-11-26.xlsx",
+      "kind": "original BOM export",
+      "bytes": 8098,
+      "sha256": "15538f838288cc6dca7dd0d1cafc19c6327ad14f76133d4f67138ab42c5c1fb4"
+    },
+    {
+      "file": "bom-readable.csv",
+      "source_filename": "BOM_集成式线轨控制板_v1.0_集成式线轨控制板_PCB_2026-11-26.xlsx",
+      "kind": "readable transcription of BOM worksheet",
+      "bytes": 1514,
+      "sha256": "974674d5a5441ba5ecc1622881a7bc34c730c7bff5d07cca7343a8c53fb83535"
     }
   ]
 }

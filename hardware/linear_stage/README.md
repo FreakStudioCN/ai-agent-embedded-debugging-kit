@@ -2,7 +2,7 @@
 
 现有实机采用XIAO ESP32S3 + 独立TB6600进行单轴有限脉冲验证。2026-11-26新增集成式线轨控制板设计截图与ICON归档；新板尚未完成实物验证，与后续多轴综合控制板规划区分。
 
-- [集成式线轨控制板 v1.0：原理图、PCB正反面、新ICON及工程链接](integrated_control_board/v1.0/2026-11-26/README.md)
+- [集成式线轨控制板 v1.0：原理图、PCB、新ICON、接线、最新BOM及主控替代说明](integrated_control_board/v1.0/2026-11-26/README.md)
 - [采购链接、实际型号/参数与待补尺寸](specifications.md)
 - [机器可读清单与最新已记录实验](inventory.json)
 - [工业传感器/电平转换核对](sensor-inputs.md)
